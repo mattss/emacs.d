@@ -151,30 +151,16 @@ Interactive documentation
 
 When the cursor is over a symbol::
 
-  * function: ``C-h f`` 
-  * variable: ``C-h v``
+  * function: ``C-h f``  / ``M-x describe-function``
+  * variable: ``C-h v`` / ``M-x describe-variable``
 
-Show information about the current ``major-mode``,
-usually includes key-bindings::
+Show information about a given ``major-mode` ::
 
-  ``C-h m``
+  ``C-h m``/ ``M-x describe-mode``
 
-Emacs command:
+Show information about a particular ``package``::
 
-.. code:: cl
-
-   (describe-mode)
-
-
-Show information about a particular package::
-
-  ``C-h P`` 
-
-Emacs command::
-
-.. code:: cl
-
-   (describe-package)
+  ``C-h P`` / ``M-x describe-package``.
 
 
 Python development
@@ -199,11 +185,16 @@ Related packages
     Integration of flymake_ with python-mode_.
 
 
-To make the following Emacs command work correctly::
+Jumping to a given source file from a Python symbol is 
+done by the jedi_ command::
 
 .. code:: cl
 
    (jedi:goto-definition) 
+
+which by default is bound to::
+  
+  ``C-c .``
 
 the pungi_ package detects if the file you are editing
 resides in either virtualenv, or ``buildout``.
@@ -218,14 +209,10 @@ When ``eggs-directory is shared, make sure it lives under:
 
 In this way, ``jedi:goto-definition`` should always be able to
 'jump' to the correct source file (if you've run buildout!)
-   
-Contributing
-============
-If you think of a feature you'd like to add, or have found a bug,
-please raise an issue on github.
+   sue on github.
 
 Read HACKING.rst for a guide on developing emacs-netsight.
-Thanks!
+Thanks!mb
 
 .. _Cask: https://github.com/cask/cask
 .. _Emacs: https://www.gnu.org/software/emacs/

@@ -9,6 +9,7 @@
 (depends-on "flymake-cursor")
 (depends-on "flymake-easy")
 (depends-on "flymake-python-pyflakes")
+(depends-on "gh")
 (depends-on "git")
 (depends-on "git-blame")
 (depends-on "git-commit-training-wheels-mode")
