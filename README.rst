@@ -77,13 +77,13 @@ Installation
 
 .. code:: bash
 	  
-  $ git clone emacs-netsight_ ~/.emacs.d
+  git clone emacs-netsight_ ~/.emacs.d
 
-  $ cd ~/.emacs.d
+  cd ~/.emacs.d
 
-  $ cask
+  cask
 
-  $ emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
+  emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
 
 
 ``emacs-netsight`` should now be installed.
