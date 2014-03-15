@@ -186,9 +186,9 @@ Related packages
 
 
 Jumping to a given source file from a Python symbol is 
-done by the jedi_ command::
+done with the jedi_ command::
 
-.. code:: cl
+.. code-block:: cl
 
    (jedi:goto-definition) 
 
