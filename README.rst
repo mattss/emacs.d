@@ -92,7 +92,7 @@ Usage
 =====
 Install new packages via Emacs's default package manager::
 
-  M-x list-pacakges
+  ``M-x list-pacakges``
 
 The pallet_ package automatically
 takes care of keeping the Cask_ file up to date with packages 
@@ -107,7 +107,6 @@ functions in this file.
 
 If you require variables to differ depending on 
 the project you're working on, 
-
 consider using `directory local variables`_.
 
 Experimental features
@@ -123,9 +122,10 @@ In order to do this, we'll use the example of ``python-auto-magic`.
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
 then add load it using your ``custom-file`` ::
 
-  .. code:: emacs-lisp
+.. code:: lisp
 
      (load-experimental "python-auto-magic.el"))
+
 
 Temporary experimentation with ``customize``
 --------------------------------------------
