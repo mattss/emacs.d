@@ -9,13 +9,15 @@ tools (e.g homebrew, apt).
 
 1  Installation
   1.1  OSX
+  1.2  Migration from an existing configuration
+  1.3  Final Installation
 2  Usage
   2.1  Custom settings and functions
   2.2  Experimental features
   2.3  Temporary experimentation with ``customize``
   2.4  Interactive documentation
   2.5  Python development
-    2.5.1  Related packages
+  2.6  Related packages
 3  Contributing
 
 Installation
@@ -46,22 +48,29 @@ Test that this works::
 
   $ emacs -nw
 
-Migration from older Emacs setup::
+Migration from an existing configuration
+----------------------------------------
 
   $ test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
   $ test -f ~/.emacs && mv ~/.emacs{,.bak}
+
+
+Final Installation
+-------------------
 
 .. CAUTION:
    Since Emacs uses several diff_erent libraries,
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-Final Installation ::
 
   $ git clone emacs-netsight_ ~/.emacs.d
   $ cd ~/.emacs.d
   $ cask
   $ emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
+
+``emacs-netsight`` should now be installed.
+
 
 Usage
 =====
