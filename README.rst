@@ -122,7 +122,7 @@ In order to do this, we'll use the example of ``python-auto-magic`.
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
 then add load it using your ``custom-file`` ::
 
-.. code: lisp
+.. code::lisp
 
      (load-experimental "python-auto-magic.el"))
 
@@ -133,7 +133,7 @@ Using the customize interface will allow easy introspection
 of the relevant feature, providing options for values,
 and some documentation as to their purpose.
 
-.. code-block: lisp
+.. code::lisp
 
   (customize-variable)
   (customize-theme)
