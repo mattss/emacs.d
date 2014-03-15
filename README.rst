@@ -78,11 +78,8 @@ Installation
 .. code:: bash
 	  
   git clone emacs-netsight_ ~/.emacs.d
-
   cd ~/.emacs.d
-
   cask
-
   emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
 
 
