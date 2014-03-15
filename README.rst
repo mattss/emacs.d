@@ -63,7 +63,7 @@ Test that this works::
 Migration from an existing configuration
 ----------------------------------------
 
-.. code: bash
+.. code:: bash
 
    test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
    test -f ~/.emacs && mv ~/.emacs{,.bak}
