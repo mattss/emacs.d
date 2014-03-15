@@ -18,7 +18,6 @@ tools (e.g homebrew, apt).
     2.5.1  Related packages
 3  Contributing
 
-
 Installation
 ============
 
@@ -57,13 +56,12 @@ Migration from older Emacs setup::
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-Installing::
+Final Installation ::
 
   $ git clone emacs-netsight_ ~/.emacs.d
   $ cd ~/.emacs.d
   $ cask
   $ emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
-
 
 Usage
 =====
@@ -94,11 +92,13 @@ As you discover new packages and try new features,
 we'd like to use them without requiring them permentaly in the 
 main configuration.
 
-In order to do this, we'll use the example of ``python-auto-magic`.
-Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
-then add load it using your ``custom-file``::
 
-  .. code :: emacs-lisp
+In order to do this, we'll use the example of ``python-auto-magic`.
+
+Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
+then add load it using your ``custom-file`` ::
+
+  .. code:: emacs-lisp
 
      (load-experimental "python-auto-magic.el"))
 
@@ -142,7 +142,7 @@ In order to do so you'll need to uninstall the python-mode_
 package.
 
 Related packages
-~~~~~~~~~~~~~~~~
+----------------
 
   jedi_
     Provides code completion, navigation and documentation helpers. 
@@ -156,9 +156,10 @@ Related packages
 
 To make ``jedi:goto-definition`` work correctly,
 the pungi_ package detects if the file you are editing
-resides in either virtualenv, xor ``buildout``.
+resides in either virtualenv, or ``buildout``.
 
-If your project uses buildout::
+If your project uses buildout_, then::
+
   When ``eggs-directory`` is defined in the project buildout,
   ensure that is is somewhere "above" /home/zope/<project/eggs, 
   or create a symlink.
@@ -177,15 +178,17 @@ please raise an issue on github.
 Read HACKING.rst for a guide on developing emacs-netsight.
 Thanks!
 
-.. _Emacs: https://www.gnu.org/software/emacs/
-.. _emacs-netsight: https://github.com/netsight/emacs-netsight
 .. _Cask: https://github.com/cask/cask
-.. _pallet: https://github.com/rdallasgray/pallet
+.. _Emacs: https://www.gnu.org/software/emacs/
+.. _Flymake: http://www.gnu.org/software/emacs/manual/html_node/flymake/index.html#Top
+.. _buildout: http://www.buildout.org/en/latest/
 .. _`directory local variables`: http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html
-.. _marmalade: http://marmalade-repo.org
-.. _python-mode: https://launchpad.net/python-mode
+.. _emacs-netsight: https://github.com/netsight/emacs-netsight
 .. _jedi: http://jedi.jedidjah.ch/en/latest/
+.. _marmalade: http://marmalade-repo.org
+.. _pallet: https://github.com/rdallasgray/pallet
 .. _pungi: https://github.com/mgrbyte/pungi.git
+.. _python-mode: https://launchpad.net/python-mode
 
 :Author: Matthew Russell <mattr@netsight.co.uk> @mgrbyte
 :Date:   2014-03-15
