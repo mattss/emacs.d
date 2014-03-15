@@ -3,9 +3,11 @@ Netsight - Emacs environment
 ============================
 
 This Emacs_ setup assumes Emacs 24 or higher.
-Requires Cask_  be installed.
-Cask can also be installed via your systems' normal package management
-tools (e.g homebrew, apt).
+
+Cask_  is used for installation and continuous configuration.
+
+Cask_ can be installed via your systems' normal package management
+tool. 
 
 1.  Installation
 
@@ -16,7 +18,7 @@ tools (e.g homebrew, apt).
   1.3  Final Installation
 
 2.  Usage
-
+f
   2.1  Custom settings and functions
 
   2.2  Experimental features
@@ -39,6 +41,11 @@ Ensure that ``emacs`` and ``cask`` are available on your shell's $PATH.
 
 OSX
 ---
+
+.. code-block:: bash
+
+   brew install cask
+
 
 The OSX app, and Homebrew usually install an ``Emacs`` executable to::
 
@@ -63,7 +70,7 @@ Test that this works::
 Migration from an existing configuration
 ----------------------------------------
 
-.. code:: bash
+.. code-block:: bash
 
    test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
    test -f ~/.emacs && mv ~/.emacs{,.bak}
@@ -77,7 +84,7 @@ Installation
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-.. code:: bash
+.. code-block:: bash
 	  
   git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
@@ -223,6 +230,7 @@ Thanks!
 .. _Cask: https://github.com/cask/cask
 .. _Emacs: https://www.gnu.org/software/emacs/
 .. _Flymake: http://www.gnu.org/software/emacs/manual/html_node/flymake/index.html#Top
+.. _HACKING: HACKING.rst
 .. _buildout: http://www.buildout.org/en/latest/
 .. _`directory local variables`: http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html
 .. _emacs-netsight: https://github.com/netsight/emacs-netsight
