@@ -63,7 +63,7 @@ Test that this works::
 Migration from an existing configuration
 ----------------------------------------
 
-.. code:: bash
+.. code: bash
 
    test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
    test -f ~/.emacs && mv ~/.emacs{,.bak}
@@ -77,7 +77,7 @@ Installation
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-.. code:: bash
+.. code: bash
 	  
   git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
@@ -122,7 +122,7 @@ In order to do this, we'll use the example of ``python-auto-magic`.
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
 then add load it using your ``custom-file`` ::
 
-.. code:: lisp
+.. code: lisp
 
      (load-experimental "python-auto-magic.el"))
 
@@ -133,10 +133,11 @@ Using the customize interface will allow easy introspection
 of the relevant feature, providing options for values,
 and some documentation as to their purpose.
 
-Examples::
+.. code-block: lisp
 
-  M-x customize-variable
-  M-x customize-theme
+  (customize-variable)
+  (customize-theme)
+
 
 When saved, ``emacs-lisp`` is written to your ``custom-file``.
 
