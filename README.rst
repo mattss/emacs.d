@@ -1,118 +1,191 @@
-:Author: Matthew Russell <mattr@netsight.co.uk>
-:Date:   2014-03-13
+============================
+Netsight - Emacs environment
+============================
 
-========================================
-Hacking on the Netsight Emacs 24 pacakge
-========================================
+This Emacs_ setup assumes Emacs 24 or higher.
+Requires Cask_  be installed.
+Cask can also be installed via your systems' normal package management
+tools (e.g homebrew, apt).
 
-This is an Emacs (24) package.
-It provides a variety of utilities and emacs goodies that
-should make Emacsen :D.
-
-Why does this exist? / Why changs from previous devtools emacs-24 config?
-=========================================================================
-
-The author wanted to be able to re-use the python
-emacs config he uses at home and at work without having
-to have rely upon work settings at home and vica-versa.
-
-The author now authors 3 emacs packages:
- * ``pungi`` - Python integration with jedi
- * ``mgrbyte`` - Personal (local at home only package)
- * ``netsight`` - Work specific functions and settings.
-
-There's actually a few functions in "netsight" the author would
-like to factor out into something that could be used elsewhere,
-like the date/time insertion tools.
-
-Also:
- * Better pacakge dependencies
- * Saner(tm) development experience,
- * Integration with elpa/list-packages.
+1  Installation
+  1.1  OSX
+2  Usage
+  2.1  Custom settings and functions
+  2.2  Experimental features
+  2.3  Temporary experimentation with ``customize``
+  2.4  Interactive documentation
+  2.5  Python development
+    2.5.1  Related packages
+3  Contributing
 
 
-Hacking
-=======
+Installation
+============
 
-Checkout or copy the source directory whence this
-file is located. In the example below, the author's local
-bitbucket directory paths are used.
+Ensure that ``emacs`` and ``cask`` are available on your shell's $PATH.
 
-Create a directory that will be used to host local packages.
-Below the example of "~/orion" is given, but it can be any directory.
+OSX
+---
 
+The OSX app, and Homebrew usually install an ``Emacs`` executable to::
 
-Development cycle
-=================
+  /Applicatons/Emacs.app/Contents/MacOS/Emacs 
 
-Initial Setup
--------------
-Install ``cask`` for your operating system.
-See http://cask.github.io/
-OSX users can install ``cask`` with homebrew.
-Once installed, run:
+Add either an alias to your shell profile::
 
-$ make clean
-$ make $(cask version)
-$ make install
+  alias emacs="/Applicatons/Emacs.app/Contents/MacOS/Emacs"
 
-Cycle
-------
-1. Add new feature/make changes to elisp files (.el extensions)
-2. Bump the version number in the filename:Cask
-3. run:
-   $ cask install
-4. run:
-   $ emacs -Q -nw -l package
-   M-x list-packages
-   Search and select the ``netsight`` package.
-   Mark for deletion with key ``d``.
-   Execute deltetion with key ``x``.
-   exit emacs.
-5. run:
-   $ make clean && make $(cask version)
-6. run:
-   $ emacs -Q -nw -l package
-   M-x list-packages
-   M-x install-package-file RET
-   Specifcy path to tar file: 
-       dist/$(cask version)/netsight-$(cask version).tar
-   RET
-6. Check that there are no errors.
-   Preferably, ensure that there are no warnings.
-7. commit and push.
+Or create a symbolic link such that``Emacs``resolves correctly
+using $PATH::
 
-list-packages provides a feature to update versions,
-so when we're happy with a particular upgrade, we should update the dependency
-and bump the version of this package.
+  test -d ~/bin || mkdir ~/bin/
+  export PATH="$HOME/bin:$PATH"
+
+$ ln -s /Applicatons/Emacs.app/Contents/MacOS/Emacs ~/bin/emacs
+ 
+Test that this works::
+
+  $ emacs -nw
+
+Migration from older Emacs setup::
+
+  $ test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
+  $ test -f ~/.emacs && mv ~/.emacs{,.bak}
+
+.. CAUTION:
+   Since Emacs uses several diff_erent libraries,
+   please check KNOWN_ISSUES.rst and apply any workarounds
+   that may be required before proceding to final installation.
+
+Installing::
+
+  $ git clone emacs-netsight_ ~/.emacs.d
+  $ cd ~/.emacs.d
+  $ cask
+  $ emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
 
 
-Debugging tips
-==============
-Do not 'ffap to the line in the output to attempt to fix the error, since the file compiled is
-in the 'build' directory, not the source.
-You can however rely upon the line numbers of the errors :)
+Usage
+=====
+Install new packages via Emacs's default package manager::
 
-If no errors or warnings occur, then the compile log won't be shown in the package manager
-- i.e a clean install.
+  M-x list-pacakges
+
+The pallet_ package automatically
+takes care of keeping the Cask_ file up to date with packages 
+you may install or delete with ``list-packages``.
+
+Custom settings and functions
+-----------------------------
+
+The default ``custom-file`` is "~/.emacs-custom.el".
+Place any personal preference settings and utility 
+functions in this file.
+
+If you require variables to differ depending on 
+the project you're working on, 
+
+consider using `directory local variables`_.
+
+Experimental features
+---------------------
+
+As you discover new packages and try new features,
+we'd like to use them without requiring them permentaly in the 
+main configuration.
+
+In order to do this, we'll use the example of ``python-auto-magic`.
+Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
+then add load it using your ``custom-file``::
+
+  .. code :: emacs-lisp
+
+     (load-experimental "python-auto-magic.el"))
+
+Temporary experimentation with ``customize``
+--------------------------------------------
+Using the customize interface will allow easy introspection
+of the relevant feature, providing options for values,
+and some documentation as to their purpose.
+
+Examples::
+
+  M-x customize-variable
+  M-x customize-theme
+
+When saved, ``emacs-lisp`` is written to your ``custom-file``.
+
+Interactive documentation
+-------------------------
+
+When the cursor is over a symbol::
+
+  * function: ``C-h f`` 
+  * variable: ``C-h v``
+
+Show information about the current ``major-mode``,
+usually includes key-bindings::
+
+  ``C-h m`` or ``M-x describe-mode``
+
+Show information about a particular package::
+
+  ``C-h P`` or ``M-x describe-package``
+
+Python development
+------------------
+By default, the netsight package uses the python-mode_.
+package from the marmalade_ repository.
+Should you prefer, you can use the default mode that is
+built-in to ``Emacs``, named ``python``.
+In order to do so you'll need to uninstall the python-mode_
+package.
+
+Related packages
+~~~~~~~~~~~~~~~~
+
+  jedi_
+    Provides code completion, navigation and documentation helpers. 
+
+  pungi_
+    Integrates jedi_ with python-mode_.
+
+  flymake-python-flymake_
+    Integration of flymake_ with python-mode_.
 
 
-Upgrading
-=========
+To make ``jedi:goto-definition`` work correctly,
+the pungi_ package detects if the file you are editing
+resides in either virtualenv, xor ``buildout``.
 
-Upgrade using the pacakge manager.
+If your project uses buildout::
+  When ``eggs-directory`` is defined in the project buildout,
+  ensure that is is somewhere "above" /home/zope/<project/eggs, 
+  or create a symlink.
+    
+  When ``eggs-directory is shared, make sure it lives under:
+  /home/eggs or /home/zope/eggs.
 
-Method:
--------
-   1. list-packages
-     1.1 list-packages
-     1.2 mark netsight package for upgrade (list-package should indicate upgrade
-         it available, if not, visit netsight-develop.el and evaluate the buffer,
-         then run list-packages again)
-     1.3 Hit Shift-u, x (upgrade and install) and confirm.
+  In this way, ``jedi:goto-definition`` should always be able to
+  'jump' to the correct source file (if you've run buildout!)
+   
+Contributing
+============
+If you think of a feature you'd like to add, or have found a bug,
+please raise an issue on github.
 
-TDB:
-----
-Create a hosted package distribution directory such that
-evaluation of the netsight-develop.el (to grok local package directory) is not
-required.
+Read HACKING.rst for a guide on developing emacs-netsight.
+Thanks!
+
+.. _Emacs: https://www.gnu.org/software/emacs/
+.. _emacs-netsight: https://github.com/netsight/emacs-netsight
+.. _Cask: https://github.com/cask/cask
+.. _pallet: https://github.com/rdallasgray/pallet
+.. _`directory local variables`: http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html
+.. _marmalade: http://marmalade-repo.org
+.. _python-mode: https://launchpad.net/python-mode
+.. _jedi: http://jedi.jedidjah.ch/en/latest/
+.. _pungi: https://github.com/mgrbyte/pungi.git
+
+:Author: Matthew Russell <mattr@netsight.co.uk> @mgrbyte
+:Date:   2014-03-15

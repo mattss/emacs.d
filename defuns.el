@@ -1,6 +1,5 @@
-;;; netsight-utils.el --- Utility functions
+;;; defuns.el --- Utility functions -*- lexical-binding: t; -*-
 ;; lispy stuff
-
 
 ;;; Commentary:
 ;; 
@@ -72,7 +71,6 @@ Argument ARG Word to be deleted."
     (with-current-buffer standard-output
       (call-process shell-file-name nil t nil shell-command-switch command))))
 
-
 ; Page up/down functionality
 (defun ne-page-up ()
   "Move point to top of screen if it is within the window, else top of prev screen."
@@ -92,13 +90,12 @@ Argument ARG Word to be deleted."
   (sit-for 0)
   (set-window-point nil (- (window-end) 1)))
 
-; Quick-Insert python debug mode
+;; Quick-Insert python debug mode
 (defun insert-debug ()
   "Insert python debug commands."
   (interactive)
   (insert "import pdb; pdb.set_trace()")
   (backward-char 27) )
-
 
 (defun start-ide-mode ()
   "Set up 3 column layout with shell."
@@ -109,12 +106,10 @@ Argument ARG Word to be deleted."
   (other-window 2)
   (shell))
 
-
 (defun other-window-back ()
  "Move to previous window."
  (interactive)
  (other-window -1))
-
 
 ;; Confirm switch to non-existent buffer
 (defadvice switch-to-buffer (around confirm-non-existing-buffers activate)
@@ -124,21 +119,18 @@ Argument ARG Word to be deleted."
           (y-or-n-p (format "´%s' does not exist, create? "(ad-get-arg 0))))
       ad-do-it))
 
-
 ; Igor
 (defun igor-init ()
- "Insert python debug commands."
- (interactive)
- (call-process "igor" nil t nil buffer-file-name)
- (revert-buffer 'ignore-auto 'dont-ask 'preserve-modes))
-
+  "Insert python debug commands."
+  (interactive)
+  (call-process "igor" nil t nil buffer-file-name)
+  (revert-buffer 'ignore-auto 'dont-ask 'preserve-modes))
 
 ; Gitweb
 (defun gitweb ()
- "Insert python debug commands."
- (interactive)
- (call-process "/home/dev/devtools/scripts/gitweb" nil 0 nil buffer-file-name))
-
+  "Insert python debug commands."
+  (interactive)
+  (call-process "gitweb" nil 0 nil buffer-file-name))
 
 ; nspaste
 (defun nspaste-init ()
@@ -180,10 +172,6 @@ Argument ARG Word to be deleted."
       (message filename))))
 
 
-
-;; ====================
-;; insert date or time
-
 (defvar current-date-format "%Y-%m-%d"
   "Format of date to insert with `insert-current-date'.
 See documentation of `format-time-string' for possible replacements")
@@ -213,6 +201,59 @@ Uses `current-date-time-format' for the formatting the date/time."
       (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max)))
     (set-buffer-modified-p nil)))
 
-(provide 'netsight-utils)
+(defun flymake-pyflakes-init ()
+  "Create a temporary buffer for external pychecker command."
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list flymake-python-pyflakes-executable (list local-file))))
 
-;;; netsight-utils.el ends here
+(defun google ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if (region-active-p)
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Query: ")))))
+
+(defun message-fmt (msg arg)
+  (message (format msg arg)))
+
+(defun insert-package-summary ()
+  "Inserts the summary of an ELPA package at point."
+  (interactive)
+  (let ((pkg-name     
+         (if (region-active-p)
+             (buffer-substring (region-beginning) (region-end))
+            (read-string "Package: "))))
+    (message (format "Looking up summary for package %s" pkg-name))
+    (let* ((pkg (make-symbol pkg-name))
+           (pkg-symbol 'pkg-symbol)
+           (pkg-vec (assq pkg package-alist))
+           (pkg-desc-v (cdr pkg-vec))
+           (pkg-desc-vlen (length pkg-desc-v)))
+      (message (format "XXX: %s" (cdr (assq pkg package-alist))))
+      (if (eq pkg-desc-v nil)   
+          (message "Could not find package info"))
+      (message-fmt "L: %s" pkg-desc-vlen)
+      (when pkg-desc-vlen
+        (let ((summary (elt pkg-desc-v (- pkg-desc-vlen 1))))
+          (message summary)
+          (insert (car summary)))))))
+
+(defun load-experiment (file-name)
+  "Loads an experimental elisp file into the current session."
+  (let* ((exp-name (locate-user-emacs-file "experimental"))
+	 (exp-dir (file-name-as-directory exp-name))
+	 (exp-path (concat exp-dir file-name)))
+    (if (file-exists-p exp-path)
+	(load exp-path)
+      (message 
+       (format "Could not find experimental elisp %s" exp-path)))))
+  
+
+

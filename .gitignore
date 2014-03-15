@@ -1,0 +1,14 @@
+*.dat
+*.elc
+*~
+*_flymake.el
+/.cask
+/.mc-lists.el
+/.python-environments
+/auto-save-list
+/elpa
+/projectile.cache
+/sandbox
+/tramp
+/url
+/var
