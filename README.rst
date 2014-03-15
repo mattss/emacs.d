@@ -77,7 +77,7 @@ Installation
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-.. code: bash
+.. code:: bash
 	  
   git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
