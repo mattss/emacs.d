@@ -7,18 +7,18 @@ Requires Cask_  be installed.
 Cask can also be installed via your systems' normal package management
 tools (e.g homebrew, apt).
 
-1  Installation
+1.  Installation
   1.1  OSX
   1.2  Migration from an existing configuration
   1.3  Final Installation
-2  Usage
+2.  Usage
   2.1  Custom settings and functions
   2.2  Experimental features
   2.3  Temporary experimentation with ``customize``
   2.4  Interactive documentation
   2.5  Python development
   2.6  Related packages
-3  Contributing
+3.  Contributing
 
 Installation
 ============
