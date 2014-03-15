@@ -90,9 +90,7 @@ Installation
 
 Usage
 =====
-Install new packages via Emacs's default package manager::
-
-  ``M-x list-pacakges``
+Install new packages via Emacs's default package manager ``list-pacakges``.
 
 The pallet_ package automatically
 takes care of keeping the Cask_ file up to date with packages 
@@ -121,7 +119,9 @@ main configuration.
 In order to do this, we'll use the example of ``python-auto-magic`.
 
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
-then add load it using your ``custom-file``::
+then add load it using your ``custom-file``.
+
+.. code-block:: cl
 
   (load-experimental "python-auto-magic.el"))
 
@@ -150,11 +150,25 @@ When the cursor is over a symbol::
 Show information about the current ``major-mode``,
 usually includes key-bindings::
 
-  ``C-h m`` or ``M-x describe-mode``
+  ``C-h m``
+
+Emacs command:
+
+.. code:: cl
+
+   (describe-mode)
+
 
 Show information about a particular package::
 
-  ``C-h P`` or ``M-x describe-package``
+  ``C-h P`` 
+
+Emacs command::
+
+.. code:: cl
+
+   (describe-package)
+
 
 Python development
 ------------------
@@ -178,7 +192,12 @@ Related packages
     Integration of flymake_ with python-mode_.
 
 
-To make ``jedi:goto-definition`` work correctly,
+To make the following Emacs command work correctly::
+
+.. code:: cl
+
+   (jedi:goto-definition) 
+
 the pungi_ package detects if the file you are editing
 resides in either virtualenv, or ``buildout``.
 
