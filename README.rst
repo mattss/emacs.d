@@ -67,19 +67,24 @@ Migration from an existing configuration
   $ test -f ~/.emacs && mv ~/.emacs{,.bak}
 
 
-Final Installation
--------------------
+Installation
+-------------
 
 .. CAUTION:
    Since Emacs uses several diff_erent libraries,
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceding to final installation.
 
-
+.. code:: bash
+	  
   $ git clone emacs-netsight_ ~/.emacs.d
+
   $ cd ~/.emacs.d
+
   $ cask
+
   $ emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
+
 
 ``emacs-netsight`` should now be installed.
 
