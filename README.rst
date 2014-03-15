@@ -121,11 +121,9 @@ main configuration.
 In order to do this, we'll use the example of ``python-auto-magic`.
 
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
-then add load it using your ``custom-file`` ::
+then add load it using your ``custom-file``::
 
-.. code:: lisp
-
-     (load-experimental "python-auto-magic.el"))
+  (load-experimental "python-auto-magic.el"))
 
 
 Temporary experimentation with ``customize``
@@ -134,13 +132,12 @@ Using the customize interface will allow easy introspection
 of the relevant feature, providing options for values,
 and some documentation as to their purpose.
 
-.. code:: lisp
+You can experiemnt with the emacs commands ``customize-variable`` and
+``customize-theme``.
 
-  (customize-variable)
-  (customize-theme)
-
-
-When saved, ``emacs-lisp`` is written to your ``custom-file``.
+When saving options using the above commands, 
+the resulting ``emacs-lisp`` configuration is written to your 
+``custom-file``.
 
 Interactive documentation
 -------------------------
