@@ -184,17 +184,16 @@ To make ``jedi:goto-definition`` work correctly,
 the pungi_ package detects if the file you are editing
 resides in either virtualenv, or ``buildout``.
 
-If your project uses buildout_, then::
-
-  When ``eggs-directory`` is defined in the project buildout,
-  ensure that is is somewhere "above" /home/zope/<project/eggs, 
-  or create a symlink.
+If your project uses buildout_, 
+when the setting ``eggs-directory`` is defined 
+in the project buildout, ensure that is is somewhere "above" 
+the directory path ``/home/zope/<project/eggs``, or create a symlink.
     
-  When ``eggs-directory is shared, make sure it lives under:
-  /home/eggs or /home/zope/eggs.
+When ``eggs-directory is shared, make sure it lives under:
+/home/eggs or /home/zope/eggs.
 
-  In this way, ``jedi:goto-definition`` should always be able to
-  'jump' to the correct source file (if you've run buildout!)
+In this way, ``jedi:goto-definition`` should always be able to
+'jump' to the correct source file (if you've run buildout!)
    
 Contributing
 ============
