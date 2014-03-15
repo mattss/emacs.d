@@ -63,8 +63,10 @@ Test that this works::
 Migration from an existing configuration
 ----------------------------------------
 
-  $ test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
-  $ test -f ~/.emacs && mv ~/.emacs{,.bak}
+.. code:: bash
+
+   test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
+   test -f ~/.emacs && mv ~/.emacs{,.bak}
 
 
 Installation
@@ -77,7 +79,7 @@ Installation
 
 .. code:: bash
 	  
-  git clone emacs-netsight_ ~/.emacs.d
+  git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
   cask
   emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
