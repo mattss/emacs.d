@@ -129,6 +129,7 @@
          ("\\.zcml$" . nxml-mode)))
 
 (use-package python-mode
+  :config (setq py-pychecker-command "pycheckers.py")
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode)))
