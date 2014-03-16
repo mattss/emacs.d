@@ -74,7 +74,11 @@ Install
   #     git checkout v1.0
   # Otherwise, we'll be building from the master branch
   cask
-  emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
+
+Setting up jedi requires an additional step::  
+
+    Enter emacs and run ``load-library RET jedi``
+    Then ``jedi:install-server``
 
 ``emacs-netsight`` should now be installed.
 
