@@ -68,6 +68,9 @@
       [menu-bar bookmarks bookmark-jump]
       '("Goto bookmark" . bookmark-jump))))
 
+(use-package browse-kill-ring
+  :bind ("<kp-8>" . browse-kill-ring))
+
 (use-package css-mode
   :mode (("\\.kss$" . css-mode)
          ("\\.css.dtml$". css-mode)))
@@ -106,6 +109,8 @@
     (global-flycheck-mode)))
     
 (use-package git-gutter+)
+
+(use-package google-this)
 
 (use-package java-mode
   :mode (("\\.js.dtml$" . java-mode)))
@@ -213,7 +218,6 @@
 (bind-key [kp-4] 'indent-region)
 (bind-key [kp-5] 'insert-debug)
 (bind-key [kp-6] 'comment-region)
-(bind-key [kp-8] 'browse-kill-ring)
 (bind-key [kp-9] 'start-ide-mode)
 (bind-key "C-x r r" 'revert-buffer)
 (bind-key "C-x c i" 'vc-next-action)
