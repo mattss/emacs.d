@@ -36,7 +36,7 @@
 (load-local "misc.el")
 
 ;;; custom user Lisp (from template on first load)
-(setq custom-file "~/custom.emacs")
+(setq custom-file "~/.emacs-custom.el")
 (unless (file-exists-p custom-file)
   (with-current-buffer (get-buffer-create "custom-file")
     (insert-file-contents (locate-user-emacs-file "user-custom-file-template.el") nil 0)
