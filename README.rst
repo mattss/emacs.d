@@ -142,16 +142,16 @@ Interactive documentation
 
 When the cursor is over a symbol::
 
-  * function: ``C-h f``  / ``M-x describe-function``
-  * variable: ``C-h v`` / ``M-x describe-variable``
+  * function: C-h f  or M-x describe-function
+  * variable: C-h v  or M-x describe-variable
 
 Show information about a given ``major-mode``::
 
-  ``C-h m``/ ``M-x describe-mode``
+  C-h m or M-x describe-mode
 
 Show information about a particular ``package``::
 
-  ``C-h P`` / ``M-x describe-package``.
+  C-h P or M-x describe-package
 
 
 Python development
