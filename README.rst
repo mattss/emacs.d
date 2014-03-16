@@ -9,18 +9,21 @@ Cask_  is used for installation and continuous configuration.
 Cask_ can be installed via your systems' normal package management
 tool. 
 
-1  Installation
-  1.1  OSX
-  1.2  Migration from an existing configuration
-  1.3  Installation
-2  Usage
-  2.1  Custom settings and functions
-  2.2  Experimental features
-  2.3  Temporary experimentation with ``customize``
-  2.4  Interactive documentation
-  2.5  Python development
-  2.6  Related packages
-3  Contribute
+
+[1] Installation
+[1.1] OSX
+[1.2] Migration from an existing configuration
+[1.3] Installation
+[2] Usage
+[2.1] Custom settings and functions
+[2.2] Experimental features
+[2.3] Temporary experimentation with ``customize``
+[2.4] Interactive documentation
+[2.5] Python development
+[2.6] Related packages
+[3] Contribute
+[3.1] Git Hub
+
   
 Installation
 ============
