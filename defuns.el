@@ -231,19 +231,15 @@ Uses `current-date-time-format' for the formatting the date/time."
              (buffer-substring (region-beginning) (region-end))
             (read-string "Package: "))))
     (message (format "Looking up summary for package %s" pkg-name))
-    (let* ((pkg (make-symbol pkg-name))
-           (pkg-symbol 'pkg-symbol)
+    (let* ((pkg (intern pkg-name))
            (pkg-vec (assq pkg package-alist))
            (pkg-desc-v (cdr pkg-vec))
            (pkg-desc-vlen (length pkg-desc-v)))
-      (message (format "XXX: %s" (cdr (assq pkg package-alist))))
       (if (eq pkg-desc-v nil)   
           (message "Could not find package info"))
-      (message-fmt "L: %s" pkg-desc-vlen)
       (when pkg-desc-vlen
         (let ((summary (elt pkg-desc-v (- pkg-desc-vlen 1))))
-          (message summary)
-          (insert (car summary)))))))
+          (insert summary))))))
 
 (defun load-experiment (file-name)
   "Loads an experimental elisp file into the current session."
