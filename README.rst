@@ -20,8 +20,8 @@ tool.
   2.4  Interactive documentation
   2.5  Python development
   2.6  Related packages
-
-
+3  Contribute
+  
 Installation
 ============
 
@@ -202,7 +202,10 @@ Read HACKING.rst_ for a guide on developing emacs-netsight.
 Contribute
 ==========
 
-- emacs-netsight_ on Github
+Git Hub
+-------
+
+See emacs-netsight_ on Github
 
 
 If you think of a feature you'd like to add, or have found a bug,
