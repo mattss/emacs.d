@@ -4,9 +4,8 @@ Netsight - Emacs environment
 
 This Emacs_ setup assumes Emacs 24 or higher.
 
-Cask_  is used for installation and continuous configuration.
-
-Cask_ can be installed via your systems' normal package management
+Cask_  is used for installation and continuous configuration,
+and can be installed via your systems' normal package management
 tool. 
  
 Installation
