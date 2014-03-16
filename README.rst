@@ -125,22 +125,6 @@ When saving options using the above commands,
 the resulting ``emacs-lisp`` configuration is written to your 
 ``custom-file``.
 
-Interactive documentation
--------------------------
-
-When the cursor is over a symbol::
-
-  * function: C-h f  or M-x describe-function
-  * variable: C-h v  or M-x describe-variable
-
-Show information about a given ``major-mode``::
-
-  C-h m or M-x describe-mode
-
-Show information about a particular ``package``::
-
-  C-h P or M-x describe-package
-
 Python development
 ------------------
 By default, the netsight package uses the python-mode_.
@@ -150,8 +134,10 @@ built-in to ``Emacs``, named ``python``.
 In order to do so you'll need to uninstall the python-mode_
 package.
 
-Related packages
-----------------
+Packages related to Python development
+--------------------------------------
+  python-mode_
+    An Emacs mode for editing Python code
 
   jedi_
     Python auto-completion for Emacs.
@@ -161,6 +147,14 @@ Related packages
 
   flycheck_
     On-the-fly syntax checking (Flymake done right)
+
+See the package documentation for each of the above for a
+synopsis on the all the key-bindings and utilties available.
+
+The easiest way to do so is to use the ``describe-package`` 
+command, e.g::
+  
+  C-h P RET python-mode
 
 Jumping to a given source file from a Python symbol is 
 done with the jedi_ command:
