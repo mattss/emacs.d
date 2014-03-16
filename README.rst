@@ -133,8 +133,9 @@ built-in to ``Emacs``, named ``python``.
 In order to do so you'll need to uninstall the python-mode_
 package.
 
-Packages related to Python development
---------------------------------------
+Related packages
+----------------
+
   python-mode_
     An Emacs mode for editing Python code
 
@@ -146,6 +147,45 @@ Packages related to Python development
 
   flycheck_
     On-the-fly syntax checking (Flymake done right)
+
+A selection of "most useful" keybindings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|         mode         |          Key-binding          |            Command             |        Descripton        |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|     python-mode      |            C-c C-l            |         py-shift-left          |       Shifts code        |
+|                      |                               |                                |       region left        |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|     python-mode      |            C-c C-r            |         py-shift-right         |       Shifts code        |
+|                      |                               |                                |      region right.       |
+|                      |                               |                                |                          |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|                      |             C-c .             |      jedi:goto-definition      |       Jump to the        |
+|         jedi         |                               |                                |      source code of      |
+|                      |                               |                                |      the symbol at       |
+|                      |                               |                                |          point.          |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|         jedi         |             C-c /             |  anything-jedi-related-names   |   Lookup related names   |
+|                      |                               |                                |        for symbol        |
+|                      |                               |                                |        at point.         |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|         jedi         |             C-c ?             |         jedi:show-doc          |           Show           |
+|                      |                               |                                |      documentation       |
+|                      |                               |                                |      for context at      |
+|                      |                               |                                |          point.          |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|       netsight       |       C-c C-d, C-c C-t        |  insert-current-date, insert   |      Inserts curent      |
+|                      |                               |         -current-time          |      date, time at       |
+|                      |                               |                                |          point.          |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+|     google-this      |            C-c / t            |          google-this           |      Search google       |
+|                      |                               |                                |      for the active      |
+|                      |                               |                                |  region or mini-buffer   |
+|                      |                               |                                |         prompted         |
+|                      |                               |                                |          query.          |
++----------------------+-------------------------------+--------------------------------+--------------------------+
+ 					
 
 See the package documentation for each of the above for a
 synopsis on the all the key-bindings and utilties available.
