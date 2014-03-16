@@ -90,6 +90,7 @@
     (setq dired-omit-files
           (concat dired-omit-files "\\|^\\..+$"))))
 
+
 (use-package ediff
   :config
   (progn
@@ -133,12 +134,15 @@
   :mode (("\\.xml$" . nxml-mode)
          ("\\.zcml$" . nxml-mode)))
 
+(use-package paren
+  :config (setq show-paren-style 'expression)
+  :init (show-paren-mode 1))
+
 (use-package python-mode
   :config (setq py-pychecker-command "pycheckers.py")
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode)))
-
 
 (use-package rst
   :config
