@@ -23,7 +23,6 @@
 ;; Display
 (global-linum-mode 0)
 (setq fill-column 79)
-(setq shell-prompt-pattern "\\u@\\h: \\w $ ")
 (setq transient-mark-mode 't)
 (setq column-number-mode t)
 (setq inhibit-startup-message t)
