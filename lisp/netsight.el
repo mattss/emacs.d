@@ -45,7 +45,7 @@
     (define-key map "\C-c\C-t" 'netsight-insert-current-time)
     (define-key map "\C-cnf" 'netsight-filename-to-clipboard)
     (define-key map "\C-fxp" 'netsight-other-window-back)
-    (define-key map "\C-ps" 'netsight-insert-package-summary)
+    (define-key map "\C-cps" 'netsight-insert-package-summary)
     (define-key map "\C-xW" 'netsight-fix-horizontal-size)
     (define-key map [kp-5] 'netsight-insert-debug)
     (define-key map [kp-9] 'netsight-start-ide-mode)
