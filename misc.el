@@ -29,9 +29,7 @@
 (setq search-highlight t)
 (setq query-replace-highlight t)
 
-
-;; Not sure this is safe of ney
-;;; disabling for now
+;; Not sure this is safe or not, disabling for now...
 ;; (setq-default kill-buffer-query-functions
 ;;   (remq 'process-kill-buffer-query-function
 ;;          kill-buffer-query-functions))
@@ -49,7 +47,6 @@
 (setq redisplay-dont-pause 't)
 (setq font-lock-verbose nil)
 (setq confirm-nonexistent-file-or-buffer nil)
-(setq ido-create-new-buffer 'always)
 
 ;; Un-disable some 'dangerous!' commands
 (put 'upcase-region 'disabled nil)
