@@ -23,7 +23,6 @@
 (depends-on "psvn")
 (depends-on "pungi")
 (depends-on "py-autopep8")
-(depends-on "py-isort")
 (depends-on "pyflakes")
 (depends-on "python-environment")
 (depends-on "python-mode")
