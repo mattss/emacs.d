@@ -11,7 +11,8 @@ tool.
 Installation
 ============
 
-Ensure that ``emacs`` and ``cask`` are available on your shell's $PATH.
+Ensure that ``emacs``, ``cask` and ``virtualenv`` are all
+available as executables on your shell's $PATH.
 
 OSX
 ---
