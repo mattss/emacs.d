@@ -63,7 +63,9 @@ Install
    that may be required before proceeding to final installation.
 
 .. code-block:: bash
-	  
+
+  # flycheck 'checker' dependency (proxies to pycheckers.py from devtools)
+  pip2 install --user flake8
   git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
   # If you want to run a stable version, checkout a release tag
@@ -74,9 +76,7 @@ Install
   cask
   emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
 
-
 ``emacs-netsight`` should now be installed.
-
 
 Usage
 =====
