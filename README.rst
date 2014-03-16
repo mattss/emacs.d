@@ -9,29 +9,17 @@ Cask_  is used for installation and continuous configuration.
 Cask_ can be installed via your systems' normal package management
 tool. 
 
-1.  Installation
-
+1  Installation
   1.1  OSX
-
   1.2  Migration from an existing configuration
-
-  1.3  Final Installation
-
-2.  Usage
-f
+  1.3  Installation
+2  Usage
   2.1  Custom settings and functions
-
   2.2  Experimental features
-
   2.3  Temporary experimentation with ``customize``
-
   2.4  Interactive documentation
-
   2.5  Python development
-
   2.6  Related packages
-
-3.  Contributing
 
 
 Installation
@@ -123,7 +111,7 @@ we'd like to use them without requiring them permentaly in the
 main configuration.
 
 
-In order to do this, we'll use the example of ``python-auto-magic`.
+In order to do this, we'll use the example of ``python-auto-magic``.
 
 Write the lisp for the feature in the ~/.emacs.d/experimental directory, 
 then add load it using your ``custom-file``.
@@ -154,7 +142,7 @@ When the cursor is over a symbol::
   * function: ``C-h f``  / ``M-x describe-function``
   * variable: ``C-h v`` / ``M-x describe-variable``
 
-Show information about a given ``major-mode` ::
+Show information about a given ``major-mode``::
 
   ``C-h m``/ ``M-x describe-mode``
 
@@ -176,14 +164,13 @@ Related packages
 ----------------
 
   jedi_
-    Provides code completion, navigation and documentation helpers. 
+    Python auto-completion for Emacs.
 
   pungi_
-    Integrates jedi_ with python-mode_.
+    Integrates jedi with virtualenv and buildout python environments.
 
-  flymake-python-flymake_
-    Integration of flymake_ with python-mode_.
-
+  flycheck_
+    On-the-fly syntax checking (Flymake done right)
 
 Jumping to a given source file from a Python symbol is 
 done with the jedi_ command:
@@ -204,20 +191,28 @@ when the setting ``eggs-directory`` is defined
 in the project buildout, ensure that is is somewhere "above" 
 the directory path ``/home/zope/<project/eggs``, or create a symlink.
     
-When ``eggs-directory is shared, make sure it lives under:
-/home/eggs or /home/zope/eggs.
+When ``eggs-directory`` is shared, make sure it lives under:
+``/home/eggs`` or ``/home/zope/eggs``.
 
 In this way, ``jedi:goto-definition`` should always be able to
 'jump' to the correct source file (if you've run buildout!)
-   sue on github.
 
-Read HACKING.rst for a guide on developing emacs-netsight.
-Thanks!mb
+Read HACKING.rst_ for a guide on developing emacs-netsight.
+   
+Contribute
+==========
 
+- emacs-netsight_ on Github
+
+
+If you think of a feature you'd like to add, or have found a bug,
+please raise an issue on github.
+
+.. _`Contribution guidelines`: blobs/master/CONTRIBUTING.rst
 .. _Cask: https://github.com/cask/cask
 .. _Emacs: https://www.gnu.org/software/emacs/
-.. _Flymake: http://www.gnu.org/software/emacs/manual/html_node/flymake/index.html#Top
-.. _HACKING: HACKING.rst
+.. _flycheck: http://flycheck.readthedocs.org/en/latest/
+.. _HACKING.rst: blobs/master/HACKING.rst
 .. _buildout: http://www.buildout.org/en/latest/
 .. _`directory local variables`: http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html
 .. _emacs-netsight: https://github.com/netsight/emacs-netsight

@@ -201,25 +201,6 @@ Uses `current-date-time-format' for the formatting the date/time."
       (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max)))
     (set-buffer-modified-p nil)))
 
-(defun flymake-pyflakes-init ()
-  "Create a temporary buffer for external pychecker command."
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list flymake-python-pyflakes-executable (list local-file))))
-
-(defun google ()
-  "Googles a query or region if any."
-  (interactive)
-  (browse-url
-   (concat
-    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
-    (if (region-active-p)
-        (buffer-substring (region-beginning) (region-end))
-      (read-string "Query: ")))))
-
 (defun message-fmt (msg arg)
   (message (format msg arg)))
 

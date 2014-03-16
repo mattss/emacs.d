@@ -88,35 +88,25 @@
           (concat dired-omit-files "\\|^\\..+$"))))
 
 (use-package ediff
-  :bind ("C-x v =" . ediff-current-buffer-revision)
   :config
   (progn
     (setq ediff-shell (getenv "$SHELL"))
     (setq-default ediff-split-window-function
                   (quote split-window-vertically))))
 
-(use-package flymake
-  :bind ("<kp-7>" . flymake-goto-next-error)
+(use-package flycheck
+  :bind ("<kp-7>" . flycheck-next-error)
   :config
   (progn
-    (setq flymake-allowed-file-name-masks
-          (quote (("\\.py\\'" flymake-pyflakes-init)
-                  ("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init)
-                  ("\\.xml\\'" flymake-xml-init)
-                  ("\\.zcml\\'" flymake-xml-init)
-                  ("\\.html?\\'" flymake-xml-init)
-                  ("\\.cs\\'" flymake-simple-make-init)
-                  ("\\.p[ml]\\'" flymake-perl-init)
-                  ("\\.php[345]?\\'" flymake-php-init)
-                  ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup)
-                  ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup)
-                  ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup)
-                  ("\\.tex\\'" flymake-simple-tex-init)
-                  ("\\.idl\\'" flymake-simple-make-init))))))
-
-(use-package flymake-python-pyflakes
-  :config (setq flymake-python-pyflakes-executable "pycheckers.py"))
+    (setq flycheck-python-flake8-executable "pycheckers.py")
+    (setq flycheck-highlighting-mode (quote lines)))
+  :init
+  (progn
+    (fringe-mode (quote (4 . 0)))
+    (global-flycheck-mode)))
     
+(use-package git-gutter+)
+
 (use-package java-mode
   :mode (("\\.js.dtml$" . java-mode)))
 
@@ -134,21 +124,15 @@
     (prefer-coding-system 'utf-8)))
 
 (use-package nxml-mode
-  :config (setq nxml-indent-offset 2)
+  :config (setq nxml-child-indent 2)
   :mode (("\\.xml$" . nxml-mode)
          ("\\.zcml$" . nxml-mode)))
 
 (use-package python-mode
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
-         ("\\.vpy$" . python-mode))
-  :init
-  (progn
-    (add-to-list 'flymake-allowed-file-name-masks
-                 '("\\.py\\'" flymake-pyflakes-init))
-    (add-hook 'python-mode-hook
-              '(lambda ()
-                 (pep8-flymake-mode)))))
+         ("\\.vpy$" . python-mode)))
+
 
 (use-package rst
   :config
@@ -232,7 +216,6 @@
 (bind-key [kp-9] 'start-ide-mode)
 (bind-key "C-x r r" 'revert-buffer)
 (bind-key "C-x c i" 'vc-next-action)
-(bind-key "M-s M-s" 'google)
 (bind-key "M-z" 'goto-char)
 
 ;;; init.el ends here
