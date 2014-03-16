@@ -4,6 +4,7 @@
 (depends-on "ace-jump-buffer")
 (depends-on "ace-jump-mode")
 (depends-on "anything")
+(depends-on "browse-kill-ring")
 (depends-on "exec-path-from-shell")
 (depends-on "flx-ido")
 (depends-on "flycheck")
