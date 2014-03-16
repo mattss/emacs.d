@@ -200,10 +200,12 @@
 (use-package sql-mode
   :mode (("\\.zsql$" . sql-mode)))
 
-(use-package text-mode
+(use-package text
   :mode (("\\.po$" . text-mode)
 	 ("\\.pot$" . text-mode)))
   
+(use-package vc)
+
 ;; key-bindings
 (bind-key "C-c C-d" 'insert-current-date)
 (bind-key "C-c C-t" 'insert-current-time)
