@@ -8,23 +8,7 @@ Cask_  is used for installation and continuous configuration.
 
 Cask_ can be installed via your systems' normal package management
 tool. 
-
-
-[1] Installation
-[1.1] OSX
-[1.2] Migration from an existing configuration
-[1.3] Installation
-[2] Usage
-[2.1] Custom settings and functions
-[2.2] Experimental features
-[2.3] Temporary experimentation with ``customize``
-[2.4] Interactive documentation
-[2.5] Python development
-[2.6] Related packages
-[3] Contribute
-[3.1] Git Hub
-
-  
+ 
 Installation
 ============
 
@@ -52,11 +36,15 @@ using $PATH::
   test -d ~/bin || mkdir ~/bin/
   export PATH="$HOME/bin:$PATH"
 
-$ ln -s /Applicatons/Emacs.app/Contents/MacOS/Emacs ~/bin/emacs
+.. code-block:: bash
+
+   ln -s /Applicatons/Emacs.app/Contents/MacOS/Emacs ~/bin/emacs
  
 Test that this works::
 
-  $ emacs -nw
+.. code-block:: bash
+
+   emacs -nw
 
 Migration from an existing configuration
 ----------------------------------------
@@ -67,8 +55,8 @@ Migration from an existing configuration
    test -f ~/.emacs && mv ~/.emacs{,.bak}
 
 
-Installation
--------------
+Install
+-------
 
 .. CAUTION:
    Since Emacs uses several diff_erent libraries,
@@ -88,7 +76,8 @@ Installation
 
 Usage
 =====
-Install new packages via Emacs's default package manager ``list-pacakges``.
+Install new packages via Emacs's default 
+package manager ``list-pacakges``.
 
 The pallet_ package automatically
 takes care of keeping the Cask_ file up to date with packages 
@@ -112,7 +101,6 @@ Experimental features
 As you discover new packages and try new features,
 we'd like to use them without requiring them permentaly in the 
 main configuration.
-
 
 In order to do this, we'll use the example of ``python-auto-magic``.
 
@@ -153,7 +141,6 @@ Show information about a particular ``package``::
 
   C-h P or M-x describe-package
 
-
 Python development
 ------------------
 By default, the netsight package uses the python-mode_.
@@ -183,8 +170,8 @@ done with the jedi_ command:
    (jedi:goto-definition) 
 
 which by default is bound to::
-  
-  ``C-c .``
+
+  C-c .
 
 the pungi_ package detects if the file you are editing
 resides in either virtualenv, or ``buildout``.
