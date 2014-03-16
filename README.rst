@@ -66,6 +66,11 @@ Install
 	  
   git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
   cd ~/.emacs.d
+  # If you want to run a stable version, checkout a release tag
+  # See: https://github.com/netsight/emacs-netsight/releases
+  # e.g: 
+  #     git checkout v1.0
+  # Otherwise, we'll be building from the master branch
   cask
   emacs -Q -nw -l package -l jedi --script --eval '(jedi:install-server)'
 
