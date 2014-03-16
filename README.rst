@@ -58,9 +58,9 @@ Install
 -------
 
 .. CAUTION:
-   Since Emacs uses several diff_erent libraries,
+   Since Emacs uses several different libraries,
    please check KNOWN_ISSUES.rst and apply any workarounds
-   that may be required before proceding to final installation.
+   that may be required before proceeding to final installation.
 
 .. code-block:: bash
 	  
@@ -80,12 +80,21 @@ Install
 
 Usage
 =====
-Install new packages via Emacs's default 
-package manager ``list-pacakges``.
+``netsight-mode`` can be enabled globally in your ``custom-file`` with:
 
-The pallet_ package automatically
-takes care of keeping the Cask_ file up to date with packages 
-you may install or delete with ``list-packages``.
+.. code-block:: cl
+
+    (global-netsight-mode 1)
+
+Alternatively, you can invoke ``C-n n m`` , type ``M-x netsight-mode`` at any
+time, or add a mode specific hook in your ``custom-file``:
+
+.. code-block:: cl
+		
+    (add-hook 'python-mode-hook '(lambda () (netsight-mode 1)))
+
+Key-bindings and functions provided by the mode are documented in the ``info``
+window when you invoke ``C-h m`` or ``M-x describe-mode`` and navigate to ``Netsight``.
 
 Custom settings and functions
 -----------------------------
@@ -95,15 +104,24 @@ The default ``custom-file`` is "~/.emacs-custom.el".
 Place any personal preference settings and utility 
 functions in this file.
 
+If you use the ``customize`` interface in Emacs_, then any saved settings will
+be appended to this file.
+
 If you require variables to differ depending on 
 the project you're working on, 
 consider using `directory local variables`_.
 
+Package management
+------------------
+New packages can be added to Emacs by using the package manager ``M-x list-packages``.
+
+The pallet_ package automatically takes care of keeping the `Cask file_` up to 
+date with packages you may install or delete with ``list-packages``.
+
 Experimental features
 ---------------------
-
 As you discover new packages and try new features,
-we'd like to use them without requiring them permentaly in the 
+we'd like to use them without requiring them permanently in the 
 main configuration.
 
 In order to do this, we'll use the example of ``python-auto-magic``.
@@ -115,14 +133,13 @@ then add load it using your ``custom-file``.
 
   (load-experimental "python-auto-magic.el"))
 
-
 Temporary experimentation with ``customize``
 --------------------------------------------
 Using the customize interface will allow easy introspection
 of the relevant feature, providing options for values,
 and some documentation as to their purpose.
 
-You can experiemnt with the emacs commands ``customize-variable`` and
+You can experiment with the emacs commands ``customize-variable`` and
 ``customize-theme``.
 
 When saving options using the above commands, 
@@ -155,7 +172,7 @@ Related packages
 					
 
 See the package documentation for each of the above for a
-synopsis on the all the key-bindings and utilties available.
+synopsis on the all the key-bindings and utilities available.
 
 The easiest way to do so is to use the ``describe-package`` 
 command, e.g::

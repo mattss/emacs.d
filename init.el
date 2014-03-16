@@ -6,6 +6,8 @@
 ;;
 
 ;;; Code:
+
+;; Setup load-path
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
 (add-to-list 'load-path (locate-user-emacs-file "experimental"))
 
@@ -25,25 +27,10 @@
 (require 's)
 (require 'use-package)
 
-;; Ensure PATH is preserved from shell.
-(exec-path-from-shell-initialize)
-
-;; Load local elisp
-(defun load-local (file)
-  "Load a local FILE."
-  (load (f-expand file user-emacs-directory)))
-(load-local "defuns.el")
-(load-local "misc.el")
-
-;;; custom user Lisp (from template on first load)
-(setq custom-file "~/.emacs-custom.el")
-(unless (file-exists-p custom-file)
-  (with-current-buffer (get-buffer-create "custom-file")
-    (insert-file-contents (locate-user-emacs-file "user-custom-file-template.el") nil 0)
-     (write-region (buffer-string) nil custom-file)))
-(load custom-file)
-  
 ;; Package configuration
+(use-package netsight-defuns :load-path "lisp")
+(use-package netsight :load-path "lisp")
+
 (use-package bookmark
   :init
   (progn
@@ -63,7 +50,7 @@
       '("List bookmarks" . list-bookmarks))
     (define-key global-map
       [menu-bar bookmarks bookmark-set]
-      '("Add bookmark" . bookmark-set))
+      '("Add bookmark" . bookmark-sebt))
     (define-key global-map
       [menu-bar bookmarks bookmark-jump]
       '("Goto bookmark" . bookmark-jump))))
@@ -81,7 +68,7 @@
     (defadvice dired-readin
       (after dired-after-updating-hook first () activate)
       "Sort dired listings with directories first before adding mark."
-      (sort-directories-first))))
+      (netsight-sort-directories-first))))
 
 (use-package dired-x
   :config
@@ -103,18 +90,26 @@
   :config
   (progn
     (setq flycheck-python-flake8-executable "pycheckers.py")
-    (setq flycheck-highlighting-mode (quote lines)))
+    (setq flycheck-highlighting-mode 'lines))
   :init
   (progn
+    (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
     (fringe-mode (quote (4 . 0)))
-    (global-flycheck-mode)))
+    (global-flycheck-mode 1)))
     
+(use-package flymake disabled: 't)
+
 (use-package git-gutter+)
 
 (use-package google-this)
 
 (use-package java-mode
   :mode (("\\.js.dtml$" . java-mode)))
+
+(use-package jedi
+  :bind (("C-." . jedi:goto-definition)
+	 ("C-c r" . jedi:related-names)
+	 ("C-?" . jedi:show-doc)))
 
 (use-package ls-lisp
   :config (setq ls-lisp-use-insert-directory-program nil))
@@ -138,8 +133,16 @@
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
-(use-package python-mode
-  :config (setq py-pychecker-command "pycheckers.py")
+(use-package python
+  :ensure pungi
+  :config
+  (progn
+	(setq python-check-command "pycheckers.py")
+	(setq tab-width 4)
+    (define-key python-mode-map "\C-m" 'newline-and-indent))
+  :init
+  (progn
+    (require 'pungi))
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode)))
@@ -200,31 +203,20 @@
   
 (use-package vc)
 
-;; key-bindings
-(bind-key "C-c C-d" 'insert-current-date)
-(bind-key "C-c C-t" 'insert-current-time)
-(bind-key (kbd "C-x C-o") 'ffap)
-(bind-key (kbd "M-s x") 'replace-regexp)
-(bind-key (kbd "M-g f") 'list-faces-display)
-(bind-key (kbd "M-n f") 'filename-to-clipboard)
-(bind-key (kbd "C-x w") 'woman)
-(bind-key (kbd "M-c") 'capitalize-word)
-(bind-key (read-kbd-macro "<M-DEL>") 'backward-kill-word)
-(bind-key (read-kbd-macro "<C-backspace>") 'backward-kill-word)
-(bind-key "C-x W" 'fix-horizontal-size)
-(bind-key "C-x p" 'other-window-back)
-(bind-key [prior] 'ne-page-up)
-(bind-key [next] 'ne-page-dn)
-(bind-key [kp-0] 'goto-line)
-(bind-key [kp-1] 'delete-other-windows)
-(bind-key [kp-2] 'split-window-horizontally)
-(bind-key [kp-3] 'call-last-kbd-macro)
-(bind-key [kp-4] 'indent-region)
-(bind-key [kp-5] 'insert-debug)
-(bind-key [kp-6] 'comment-region)
-(bind-key [kp-9] 'start-ide-mode)
-(bind-key "C-x r r" 'revert-buffer)
-(bind-key "C-x c i" 'vc-next-action)
-(bind-key "M-z" 'goto-char)
+;; Ensure PATH is preserved from shell.
+(exec-path-from-shell-initialize)
 
+;;; custom user Lisp (from template on first load)
+(setq custom-file "~/.emacs-custom.el")
+(unless (file-exists-p custom-file)
+  (with-current-buffer (get-buffer-create "custom-file")
+    (insert-file-contents (locate-user-emacs-file "user-custom-file-template.el") nil 0)
+     (write-region (buffer-string) nil custom-file)))
+(load custom-file)
+  
+(message "Welcome to netsight-emacs")
+
+(add-hook 'after-ini-hook '(lambda () global-netsight-mode))
+
+(provide 'init)
 ;;; init.el ends here
