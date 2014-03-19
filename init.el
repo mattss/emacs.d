@@ -216,7 +216,10 @@
   
 (message "Welcome to netsight-emacs")
 
-(add-hook 'after-ini-hook '(lambda () global-netsight-mode))
+(add-hook 'after-init-hook
+	  '(lambda ()
+	     (global-netsight-mode)
+	     (message "Welcome to netsight-emacs")))
 
 (provide 'init)
 ;;; init.el ends here
