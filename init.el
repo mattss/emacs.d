@@ -133,11 +133,11 @@
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
-(use-package python
+(use-package python-mode
   :ensure pungi
   :config
   (progn
-	(setq python-check-command "pycheckers.py")
+	(setq py-pychecker-command "pycheckers.py")
 	(setq tab-width 4)
     (define-key python-mode-map "\C-m" 'newline-and-indent))
   :init
