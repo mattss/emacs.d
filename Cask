@@ -27,7 +27,6 @@
 (depends-on "pungi")
 (depends-on "py-autopep8")
 (depends-on "python-environment")
-(depends-on "python-mode")
 (depends-on "pyvirtualenv")
 (depends-on "s")
 (depends-on "sass-mode")
