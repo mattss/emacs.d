@@ -103,6 +103,12 @@
 
 (use-package google-this)
 
+(use-package js2-mode
+  :mode (("\\.js$" . js2-mode))
+  :config
+  (progn
+    (setq-default indent-tabs-mode nil)))
+
 (use-package java-mode
   :mode (("\\.js.dtml$" . java-mode)))
 

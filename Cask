@@ -19,6 +19,7 @@
 (depends-on "git-gutter-fringe+")
 (depends-on "google-this")
 (depends-on "jedi")
+(depends-on "js2-mode")
 (depends-on "lorem-ipsum")
 (depends-on "magit")
 (depends-on "pallet")
