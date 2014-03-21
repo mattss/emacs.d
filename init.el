@@ -144,8 +144,7 @@
   :config
   (progn
 	(setq python-check-command "pycheckers.py")
-	(setq tab-width 4)
-    (define-key python-mode-map "\C-m" 'newline-and-indent))
+	(setq tab-width 4))
   :init
   (progn
     (require 'pungi))
