@@ -58,6 +58,11 @@
 (use-package browse-kill-ring
   :bind ("<kp-8>" . browse-kill-ring))
 
+(use-package conf-mode
+  :mode (("\\.conf" . conf-mode)
+         ("\\.cfg" . conf-mode)
+         ("\\.ini" . conf-mode)))
+
 (use-package css-mode
   :mode (("\\.kss$" . css-mode)
          ("\\.css.dtml$". css-mode)))
