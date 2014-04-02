@@ -5,6 +5,7 @@
 (depends-on "ace-jump-mode")
 (depends-on "anything")
 (depends-on "browse-kill-ring")
+(depends-on "editorconfig")
 (depends-on "epl")
 (depends-on "exec-path-from-shell")
 (depends-on "flx-ido")

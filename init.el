@@ -90,6 +90,8 @@
     (setq-default ediff-split-window-function
                   (quote split-window-vertically))))
 
+(use-package editorconfig)
+
 (use-package flycheck
   :bind ("<kp-7>" . flycheck-next-error)
   :config
