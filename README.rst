@@ -19,7 +19,8 @@ OSX
 
 .. code-block:: bash
 
-   brew install cask
+   cd 
+   curl -fsSkL https://raw.github.com/cask/cask/master/go | python
 
 
 The OSX app, and Homebrew usually install an ``Emacs`` executable to::
