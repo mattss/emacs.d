@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 ;;; Code:
 
 (defgroup netsight nil
@@ -41,7 +41,7 @@
   (let ((map (make-sparse-keymap)))
     ;; Keys for custom netsight defuns
     (define-key map (kbd "C-c C-d") 'netsight-insert-current-date)
-    (define-key map (kbd "C-c C-t") 'netsight-insert-current-time)
+    (define-key map (kbd "C-c t") 'netsight-insert-current-time)
     (define-key map (kbd "C-c n f") 'netsight-filename-to-clipboard)
     (define-key map (kbd "C-x p") 'netsight-other-window-back)
     (define-key map (kbd "C-c p s") 'netsight-insert-package-summary)
@@ -101,7 +101,7 @@ take effect."
 (setq-default indent-line-function 'insert-tab)
 (setq indent-tabs-mode nil)
 (setq tab-always-indent nil)
-    
+
 ;; scrolling - do not add newlines when cursoring past last line in file
 (setq scroll-step 1)
 (setq next-line-add-newlines nil)
