@@ -12,7 +12,7 @@ Installation
 ============
 
 Ensure that ``emacs``, ``cask` and ``virtualenv`` are all
-available as executables on your shell's $PATH.
+available as an executable on your shell's $PATH.
 
 OSX
 ---
@@ -154,12 +154,16 @@ the resulting ``emacs-lisp`` configuration is written to your
 
 Python development
 ------------------
-By default, the netsight package uses the python-mode_.
-package from the marmalade_ repository.
-Should you prefer, you can use the default mode that is
-built-in to ``Emacs``, named ``python``.
-In order to do so you'll need to uninstall the python-mode_
-package.
+By default, the netsight package uses the built-in python_ package,
+
+The pungi_ package provides jedi_ integration for buildout_ and virtualenv.
+
+The flycheck_ package is used for PEP8 and syntax checking.
+
+The sphinx-doc_ package provides auto-generation of documentation strings for functions
+and methods.  Consult the python_ mode help for commands to insert docstrings for other
+Python_ statements.
+
 
 Related packages
 ----------------
@@ -237,6 +241,9 @@ please raise an issue on github.
 .. _pallet: https://github.com/rdallasgray/pallet
 .. _pungi: https://github.com/mgrbyte/pungi.git
 .. _python-mode: https://launchpad.net/python-mode
+.. _python: https://github.com/fgallina/python.el
+.. _sphinx-doc: https://github.com/naiquevin/sphinx-doc.el
 
 :Author: Matthew Russell <mattr@netsight.co.uk> @mgrbyte
 :Date:   2014-03-15
+:Last-modified: 2014-04-26
