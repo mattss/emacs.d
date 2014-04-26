@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2014  Matthew Russell
 
-;; Author: Matthew Russell <matthew@lemuria>
+;; Author: Matthew Russell <matthew.russell@horizon5.org>
 ;; Keywords: convenience
 
 ;; This program is free software; you can redistribute it and/or modify
