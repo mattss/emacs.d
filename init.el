@@ -152,9 +152,6 @@
   (progn
 	(setq python-check-command "pycheckers.py")
 	(setq tab-width 4))
-  :init
-  (progn
-    (require 'pungi))
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode)))
@@ -177,6 +174,8 @@
 
 (use-package sendmail
   config: (setq-default mail-interactive 't))
+
+(use-package sphinx-doc)
 
 ;; Emacs server configuration
 ;; Allows use with screen
@@ -218,6 +217,19 @@
 ;; Ensure PATH is preserved from shell.
 (exec-path-from-shell-initialize)
 
+;; Setup hooks for various modes.
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (require 'pungi)
+	    (require 'sphinx-doc)
+	    (sphinx-doc-mode t)))
+
+
+(add-hook 'after-init-hook
+	  '(lambda ()
+	     (global-netsight-mode)
+	     (message "Welcome to netsight-emacs")))
+
 ;;; custom user Lisp (from template on first load)
 (setq custom-file "~/.emacs-custom.el")
 (unless (file-exists-p custom-file)
@@ -228,10 +240,6 @@
   
 (message "Welcome to netsight-emacs")
 
-(add-hook 'after-init-hook
-	  '(lambda ()
-	     (global-netsight-mode)
-	     (message "Welcome to netsight-emacs")))
-
 (provide 'init)
 ;;; init.el ends here
+
