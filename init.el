@@ -198,7 +198,7 @@
 (use-package sgml-mode
   :config (setq sgml-basic-offset 2)
   :mode (("\\.pt$" . sgml-mode)
-         ("\\.cpt$" . smgl-mode)
+         ("\\.cpt$" . sgml-mode)
          ("\\.html" . sgml-mode)
          ("\\.htm" . sgml-mode)))
 
