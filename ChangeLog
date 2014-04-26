@@ -2,6 +2,16 @@
 Changelog
 =========
 
+1.1 (2014-04-26)
+================
+ * Add sphinx-doc support.
+   (genertation of sphinx style docstrings for methods and functions)
+ * Update README
+
+1.0 (2014-03-26)
+================
+ * First git hub release.
+	
 0.4 (2014-03-11)
 ================
  * Bump version of pungi
