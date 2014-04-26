@@ -1,6 +1,7 @@
+(source gnu)
 (source marmalade)
 (source melpa)
-(source gnu)
+
 
 (depends-on "ace-jump-buffer")
 (depends-on "ace-jump-mode")
@@ -41,5 +42,4 @@
 (depends-on "sass-mode")
 (depends-on "solarized-theme")
 (depends-on "use-package")
-(depends-on "zenburn-theme")
 (depends-on "zencoding-mode")
