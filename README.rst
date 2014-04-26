@@ -232,7 +232,7 @@ please raise an issue on github.
 .. _Cask: https://github.com/cask/cask
 .. _Emacs: https://www.gnu.org/software/emacs/
 .. _flycheck: http://flycheck.readthedocs.org/en/latest/
-.. _HACKING.rst: blobs/master/HACKING.rst
+.. _HACKING.rst: blob/master/HACKING.rst
 .. _buildout: http://www.buildout.org/en/latest/
 .. _`directory local variables`: http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html
 .. _emacs-netsight: https://github.com/netsight/emacs-netsight

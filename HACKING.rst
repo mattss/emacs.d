@@ -35,9 +35,15 @@ bufer-local variables.
 
 Use hooks judiciously, especially those involved with saving.
 
+
+Releases
+========
+Pleas use semantic versioning with git tag -a.
+
+
 :Author: Matthew Russell <mattr@netsight.co.uk>
 :Date:   2014-03-13
-
+:Last-modified: 2014-04-26
 
 
 
