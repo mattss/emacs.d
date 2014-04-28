@@ -40,16 +40,14 @@
 (defvar netsight-keymap
   (let ((map (make-sparse-keymap)))
     ;; Keys for custom netsight defuns
-    (define-key map (kbd "C-c C-d") 'netsight-insert-current-date)
-    (define-key map (kbd "C-c C-t") 'netsight-insert-current-time)
-    (define-key map (kbd "C-c n f") 'netsight-filename-to-clipboard)
-    (define-key map (kbd "C-x p") 'netsight-other-window-back)
-    (define-key map (kbd "C-c p s") 'netsight-insert-package-summary)
-    (define-key map (kbd "C-x W") 'netsight-fix-horizontal-size)
-    (define-key map (kbd "<kp-5>") 'netsight-insert-debug)
-    (define-key map (kbd "<kp-9>") 'netsight-start-ide-mode)
-    (define-key map (kbd "<next>") 'netsight-ne-page-dn)
-    (define-key map (kbd "<prior>") 'netsight-ne-page-up)
+    (define-key map (kbd "C-c n d") 'netsight-insert-current-date)
+    (define-key map (kbd "C-c n t") 'netsight-insert-current-time)
+    (define-key map (kbd "C-c n c") 'netsight-filename-to-clipboard)
+    (define-key map (kbd "C-c n o") 'netsight-other-window-back)
+    (define-key map (kbd "C-c n h") 'netsight-fix-horizontal-size)
+    (define-key map (kbd "C-c n s") 'netsight-start-ide-mode)
+    (define-key map (kbd "C-c n <down>") 'netsight-ne-page-dn)
+    (define-key map (kbd "C-c n <up>") 'netsight-ne-page-up)
 
     ;; Overrides for builtin commands
     (define-key map (kbd "M-c") 'capitalize-word)
@@ -60,15 +58,18 @@
     (define-key map (kbd "C-x C-o") 'ffap)
     (define-key map (kbd "C-x r r") 'revert-buffer)
     (define-key map (kbd "C-x w") 'woman)
-    (define-key map (kbd "<kp-0>") 'goto-line)
-    (define-key map (kbd "<kp-1>") 'delete-other-windows)
-    (define-key map (kbd "<kp-2>") 'split-window-horizontally)
-    (define-key map (kbd "<kp-3>") 'call-last-kbd-macro)
-    (define-key map (kbd "<kp-4>") 'indent-region)
-    (define-key map (kbd "<kp-6>") 'comment-region)
 
-    ;; VC command aliases
-    (define-key map (kbd "C-x c i") 'vc-next-action)
+    ;; Aliases for Netsight OSX users who like to use the keypad
+    (when (eq system-type 'darwin)
+      (define-key map (kbd "<kp-0>") 'goto-line)
+      (define-key map (kbd "<kp-1>") 'delete-other-windows)
+      (define-key map (kbd "<kp-2>") 'split-window-horizontally)
+      (define-key map (kbd "<kp-3>") 'call-last-kbd-macro)
+      (define-key map (kbd "<kp-4>") 'indent-region)
+      (define-key map (kbd "<kp-6>") 'comment-region)
+      (define-key map (kbd "<kp-9>") 'netsight-start-ide-mode)
+      (define-key map (kbd "<next>") 'netsight-ne-page-dn)
+      (define-key map (kbd "<prior>") 'netsight-ne-page-up))
 
     ;; re-map standard delete options
     (define-key map (read-kbd-macro "<C-backspace>") 'backward-kill-word)

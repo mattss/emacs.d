@@ -90,14 +90,16 @@ otherwise moves to bottom of next screen."
  (interactive)
  (other-window -1))
 
-(defun netsight-insert-debug ()
+(defun py-insert-debug ()
   "Insert python debug commands.
 
 Quick-Insert python debug mode."
   (interactive)
   (let ((pdb-text "import pdb; pdb.set_trace()"))
-    (insert pdb-text)
-    (backward-char (length pdb-text))))
+    (python-nav-end-of-statement)
+    (newline-and-indent)
+    (insert pdb-text)))
+
 
 (defun netsight-start-ide-mode ()
   "Set up 3 column layout with shell."

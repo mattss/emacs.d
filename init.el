@@ -148,6 +148,8 @@
 
 (use-package python
   :ensure pungi
+  :bind (("<kp-5>" . py-insert-debug)
+         ("<f9>" . py-insert-debug))
   :config
   (progn
 	(setq python-check-command "pycheckers.py")
