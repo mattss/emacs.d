@@ -2,7 +2,6 @@
 (source marmalade)
 (source melpa)
 
-
 (depends-on "ace-jump-buffer")
 (depends-on "ace-jump-mode")
 (depends-on "anything")
@@ -41,5 +40,6 @@
 (depends-on "s")
 (depends-on "sass-mode")
 (depends-on "solarized-theme")
+(depends-on "sphinx-doc")
 (depends-on "use-package")
 (depends-on "zencoding-mode")
