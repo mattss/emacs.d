@@ -106,6 +106,8 @@
     
 (use-package flymake disabled: 't)
 
+(use-package gist)
+
 (use-package git-gutter+)
 
 (use-package google-this)

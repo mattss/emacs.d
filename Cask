@@ -18,6 +18,7 @@
 (depends-on "flycheck-color-mode-line")
 (depends-on "flymake")
 (depends-on "gh")
+(depends-on "gist")
 (depends-on "git")
 (depends-on "git-blame")
 (depends-on "git-commit-training-wheels-mode")
