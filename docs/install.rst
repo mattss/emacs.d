@@ -1,0 +1,83 @@
+Installing this package
+=======================
+
+Ensure that ``emacs``, ``cask`` and ``virtualenv`` are all
+available as an executable on your shell's $PATH.
+
+cask
+----
+If you've not used ``cask`` before, the key is to ensure that you
+have a ``.cask`` directory in your $HOME directory, and that your shell
+profile adds the ``cask`` binary to $PATH.
+
+Use of this package assumes you know how to configure emacs, virtualenv and 
+cask appopriately for your platform.
+
+
+Migration from an existing configuration
+----------------------------------------
+Backing up your existing configuration:
+
+.. code-block:: bash
+
+   test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
+   test -f ~/.emacs && mv ~/.emacs{,.bak}
+
+
+Prerequisites
+-------------
+This package uses ``init.el`` for ``emacs`` initialisation (as opposed to .emacs whcih is more commonly used.
+
+flycheck:
+
+    Used for syntax checking in most modes, especially for ``python``.
+
+Create a ``virtualenv`` for installing python package dependencies that this package uses, add the ``bin`` directory for this ``virtualenv`` to your $PATH in your shell's profile, for example:
+
+.. code-block:: bash
+
+   mkdir $HOME
+   virtualenv-2.7 emacs-py-deps
+   cd emacs-py-deps
+   echo 'export PATH="$HOME/emacs-py-deps/bin:$PATH"' >> ~/.profile
+   
+Install the dependencies:
+
+.. code-block:: bash
+
+  cd $HOME/emacs-py-deps   
+  source bin/activate
+  pip2 install flake8
+
+
+Installation
+------------
+If you want to run a stable version, please checkout a release tag
+
+See https://github.com/netsight/emacs-netsight/releases
+
+For the commands below we'll use the ``master`` branch.
+
+.. code-block: bash
+
+  git clone https://github.com/netsight/emacs-netsight ~/.emacs.d
+  cd ~/.emacs.d
+  cask
+
+Launch ``emacs`` and run the following commands:
+
+    load-library RET jedi
+    jedi:install-server
+
+
+Updating packages
+-----------------
+When installing new package with the emacs command ``list-packages``,
+this will will update the ``cask`` configuration file ``.emacs.d/Cask``.
+
+The emacs package ``pallet`` does this seemleessly in the background.
+Should you want to synchronise the packages configured by cask in a running emacs without restarting, you can just invoke:
+
+   M-x pallet-update
+
+It is suggested to fork this package and maintain it using git should you want to use packages not provided by default.  Alternatively, if you think given package is really useful, please send a pull request and we'll consider adding it to the default configuration.
