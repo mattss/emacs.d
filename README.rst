@@ -23,7 +23,7 @@ Please see the documentation in docs_ for installation, custom configuration and
    please check KNOWN_ISSUES.rst and apply any workarounds
    that may be required before proceeding to final installation.
  
-Read HACKING.rst_ for a guide on developing emacs-netsight_.
+Read HACKING.rst_ for a guide on developing emacs.d_.
    
 Contributing
 ============
@@ -31,7 +31,7 @@ Contributing
 Git Hub
 -------
 
-See emacs-netsight_ on Github
+See emacs.d_ on Github
 
 If you think of a feature you'd like to add, or have found a bug,
 please raise an issue on github.
@@ -41,7 +41,7 @@ please raise an issue on github.
 .. _Emacs: https://www.gnu.org/software/emacs/
 .. _HACKING.rst: HACKING.rst
 .. _docs: docs
-.. _emacs-netsight: https://github.com/netsight/emacs-netsight
+.. _emacs.d: https://github.com/netsight/emacs.d
 .. _python: https://github.com/fgallina/python.el
 .. _use-package: https://github.com/jwiegley/use-package
 
