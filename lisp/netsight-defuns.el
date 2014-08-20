@@ -228,5 +228,18 @@ Uses `current-date-time-format' for the formatting the date/time."
       (message
        (format "Could not find experimental elisp %s" exp-path)))))
 
+(defun netsight-sudo-edit (&optional arg)
+  "Edit currently visited file as root.
+
+With a prefix ARG prompt for a file to visit.
+Will also prompt for a file to visit if current
+buffer is not visiting a file.
+Nicked from http://emacsredux.com/blog/2013/04/21/edit-files-as-root/"
+  (interactive "P")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:"
+                         (ido-read-file-name "Find file(as root): ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
 (provide 'netsight-defuns)
 ;;; netsight-defuns.el ends here
