@@ -19,23 +19,11 @@ Argument PKGNAME The name of the package being loaded."
     (set-frame-position frame x y)
     (set-frame-size frame w h)))
 
-(defun netsight-delete-word (arg)
-  "Delete characters forward until encountering the end of a word.
-With argument, do this that many times.
-Argument ARG Word to be deleted.
-
-This command will not add to the `kill-ring'."
-  (interactive "p")
-  (delete-region (point) (progn (forward-word arg) (point))))
-
 (defun netsight-backward-delete-word (arg)
-  "Delete characters backward until encountering the end of a word.
-With argument, do this that many times.
-Argument ARG Word to be deleted.
-
-This command will not add to the `kill-ring'."
+  "Delete characters backward until encountering the beginning of a word.
+With argument ARG, do this that many times."
   (interactive "p")
-  (netsight-delete-word (- arg)))
+  (delete-region (point) (progn (backward-word arg) (point))))
 
 (defun netsight-fix-frame-horizontal-size (width)
   "Set the frame's size to 80 (or prefix arg WIDTH) columns wide."
@@ -95,11 +83,11 @@ otherwise moves to bottom of next screen."
 
 Quick-Insert python debug mode."
   (interactive)
+  (require 'python)
   (let ((pdb-text "import pdb; pdb.set_trace()"))
     (python-nav-end-of-statement)
     (newline-and-indent)
     (insert pdb-text)))
-
 
 (defun netsight-start-ide-mode ()
   "Set up 3 column layout with shell."

@@ -72,8 +72,8 @@
       (define-key map (kbd "<prior>") 'netsight-ne-page-up))
 
     ;; re-map standard delete options
-    (define-key map (read-kbd-macro "<C-backspace>") 'backward-kill-word)
-    (define-key map (read-kbd-macro "<M-DEL>") 'backward-kill-word)
+    (define-key map (read-kbd-macro "<C-backspace>") 'netsight-backward-delete-word)
+    (define-key map (read-kbd-macro "<M-DEL>") 'netsight-backward-delete-word)
     map)
   "Keymap for `netsight-keys'.")
 
