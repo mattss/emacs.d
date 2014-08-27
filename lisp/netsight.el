@@ -51,7 +51,6 @@
 
     ;; Overrides for builtin commands
     (define-key map (kbd "M-c") 'capitalize-word)
-    (define-key map (kbd "M-d") 'netsight-delete-word)
     (define-key map (kbd "M-g f") 'list-faces-display)
     (define-key map (kbd "M-s x") 'replace-regexp)
     (define-key map (kbd "M-z") 'goto-char)
@@ -71,9 +70,6 @@
       (define-key map (kbd "<next>") 'netsight-ne-page-dn)
       (define-key map (kbd "<prior>") 'netsight-ne-page-up))
 
-    ;; re-map standard delete options
-    (define-key map (read-kbd-macro "<C-backspace>") 'netsight-backward-delete-word)
-    (define-key map (read-kbd-macro "<M-DEL>") 'netsight-backward-delete-word)
     map)
   "Keymap for `netsight-keys'.")
 
