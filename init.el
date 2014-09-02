@@ -103,7 +103,7 @@
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
     (fringe-mode (quote (4 . 0)))
     (global-flycheck-mode 1)))
-    
+
 (use-package flymake disabled: 't)
 
 (use-package gist)
@@ -210,12 +210,13 @@
   config: (setq shell-prompt-pattern "\\u@\\h: \\w $ "))
 
 (use-package sql-mode
-  :mode (("\\.zsql$" . sql-mode)))
+  :mode (("\\.zsql$" . sql-mode)
+         ("\\.sql$" . sql-mode)))
 
 (use-package text
   :mode (("\\.po$" . text-mode)
 	 ("\\.pot$" . text-mode)))
-  
+
 (use-package vc)
 
 ;; Ensure PATH is preserved from shell.
@@ -241,9 +242,8 @@
     (insert-file-contents (locate-user-emacs-file "user-custom-file-template.el") nil 0)
      (write-region (buffer-string) nil custom-file)))
 (load custom-file)
-  
+
 (message "Welcome to netsight-emacs")
 
 (provide 'init)
 ;;; init.el ends here
-
