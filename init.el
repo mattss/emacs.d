@@ -97,6 +97,7 @@
   :config
   (progn
     (setq flycheck-python-flake8-executable "pycheckers.py")
+    (setq flycheck-flake8-maximum-line-length 79)
     (setq flycheck-highlighting-mode 'lines))
   :init
   (progn
@@ -154,7 +155,7 @@
          ("<f9>" . py-insert-debug))
   :config
   (progn
-	(setq python-check-command "pycheckers.py")
+	(setq python-check-command "flake8")
 	(setq tab-width 4))
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
