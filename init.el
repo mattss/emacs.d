@@ -140,7 +140,6 @@
     (prefer-coding-system 'utf-8)))
 
 (use-package nxml-mode
-  :config (setq nxml-child-indent 2)
   :mode (("\\.xml$" . nxml-mode)
          ("\\.zcml$" . nxml-mode)))
 
@@ -234,6 +233,10 @@
 	  '(lambda ()
 	     (global-netsight-mode)
 	     (message "Welcome to netsight-emacs")))
+
+(add-hook 'nxml-mode-hook
+	  '(lambda()
+	     (setq indent-tabs-mode nil)))
 
 ;;; custom user Lisp (from template on first load)
 (setq custom-file "~/.emacs-custom.el")
