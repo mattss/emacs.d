@@ -163,6 +163,7 @@
 (use-package rst
   :config
   (progn
+    (set-fill-column 79)
     (setq rst-adornment-faces-alist
           (quote ((nil . font-lock-keyword-face)
                   (nil . font-lock-keyword-face)
@@ -171,7 +172,8 @@
                   (3 . rst-level-3-face)
                   (4 . rst-level-4-face)
                   (5 . rst-level-5-face)
-                  (nil . rst-level-5-face))))))
+                  (nil . rst-level-5-face)))))
+  :mode (("\\.rst$" . rst-mode)))
 
 (use-package sass-mode
   :config (setq sass-indent-offset 2))
