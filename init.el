@@ -246,7 +246,7 @@
 (unless (file-exists-p user-custom-file)
   (with-current-buffer (get-buffer-create "user-custom-file")
     (insert-file-contents
-     (locate-user-emacs-file "user-custom-emacs-file-template.el") nil 0)
+     (locate-user-emacs-file "user-custom-file-template.el") nil 0)
      (write-region (buffer-string) nil user-custom-file)))
 (load user-custom-file)
 
