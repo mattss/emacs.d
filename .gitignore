@@ -2,6 +2,7 @@
 *.elc
 *~
 *_flymake.el
+ido.last
 /.cask
 /.mc-lists.el
 /.python-environments
