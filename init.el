@@ -9,7 +9,6 @@
 
 ;; Setup load-path
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(add-to-list 'load-path (locate-user-emacs-file "experimental"))
 
 ;; Turn off UI clutter
 (mapc
