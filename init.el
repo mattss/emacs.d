@@ -29,7 +29,12 @@
 
 ;; Package configuration
 (use-package netsight-defuns :load-path "lisp")
-(use-package netsight :load-path "lisp")
+(use-package netsight
+  :load-path "lisp"
+  :config
+  (progn
+    (declare-function global-netsight-mode netsight nil)
+    (add-hook 'after-init-hook #'global-netsight-mode)))
 
 (use-package bookmark
   :init
@@ -147,24 +152,31 @@
 
 (use-package nxml-mode
   :mode (("\\.xml$" . nxml-mode)
-         ("\\.zcml$" . nxml-mode)))
+         ("\\.zcml$" . nxml-mode))
+  :config
+  (progn
+    (add-hook 'nxml-mode-hook
+	      (lambda ()
+		(setq indent-tabs-mode nil)))))
 
 (use-package paren
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
-(declare-function py-insert-debug netsight nil)
 (use-package python
-  :ensure pungi
   :bind (("<kp-5>" . py-insert-debug)
          ("<f9>" . py-insert-debug))
-  :config
-  (progn
-	(setq python-check-command "flake8")
-	(setq tab-width 4))
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
-         ("\\.vpy$" . python-mode)))
+         ("\\.vpy$" . python-mode))
+  :config
+  (progn
+    (declare-function py-insert-debug netsight nil)
+    (setq python-check-command "flake8")
+    (setq tab-width 4)
+    (add-hook 'python-mode-hook
+	      (lambda ()
+		(sphinx-doc-mode t)))))
 
 (use-package rst
   :config
@@ -230,23 +242,6 @@
 ;; Ensure PATH is preserved from shell.
 (exec-path-from-shell-initialize)
 
-;; Setup hooks for various modes.
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (require 'pungi)
-	    (require 'sphinx-doc)
-	    (sphinx-doc-mode t)))
-
-
-(add-hook 'after-init-hook
-	  '(lambda ()
-	     (global-netsight-mode)
-	     (message "Welcome to netsight-emacs")))
-
-(add-hook 'nxml-mode-hook
-	  '(lambda()
-	     (setq indent-tabs-mode nil)))
-
 ;;; custom user Lisp (from template on first load)
 (setq custom-file "~/.emacs-custom.el")
 (unless (file-exists-p custom-file)
@@ -254,8 +249,6 @@
     (insert-file-contents (locate-user-emacs-file "user-custom-file-template.el") nil 0)
      (write-region (buffer-string) nil custom-file)))
 (load custom-file)
-
-(message "Welcome to netsight-emacs")
 
 (provide 'init)
 ;;; init.el ends here
