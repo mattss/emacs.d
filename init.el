@@ -96,7 +96,7 @@
   :bind ("<kp-7>" . flycheck-next-error)
   :config
   (progn
-    (setq flycheck-python-flake8-executable "pycheckers.py")
+    (setq flycheck-python-flake8-executable "flake8")
     (setq flycheck-flake8-maximum-line-length 79)
     (setq flycheck-highlighting-mode 'lines))
   :init
