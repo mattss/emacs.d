@@ -101,6 +101,7 @@
     (setq flycheck-highlighting-mode 'lines))
   :init
   (progn
+    (declare-function flycheck-next-error flycheck nil)
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
     (fringe-mode (quote (4 . 0)))
     (global-flycheck-mode 1)))
@@ -123,6 +124,10 @@
   :mode (("\\.js.dtml$" . java-mode)))
 
 (use-package jedi
+  :init (progn
+	  (declare-function jedi:goto-definition jedi nil)
+	  (declare-function jedi:related-names jedi nil)
+	  (declare-function jedi:show-doc jedi nil))
   :bind (("C-." . jedi:goto-definition)
 	 ("C-c r" . jedi:related-names)
 	 ("C-?" . jedi:show-doc)))
@@ -148,6 +153,7 @@
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
+(declare-function py-insert-debug netsight nil)
 (use-package python
   :ensure pungi
   :bind (("<kp-5>" . py-insert-debug)
