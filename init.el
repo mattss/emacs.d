@@ -18,10 +18,12 @@
      (funcall mode -1)))
  '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
-;; Setup package management
+;; Setup package management (Cask)
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
+(setq package-enable-at-startup nil)
 (package-initialize)
+
 (require 'pallet)
 (require 'f)
 (require 's)
