@@ -153,18 +153,21 @@
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
-(declare-function py-insert-debug netsight nil)
 (use-package python
   :ensure pungi
   :bind (("<kp-5>" . py-insert-debug)
          ("<f9>" . py-insert-debug))
   :config
   (progn
-	(setq python-check-command "flake8")
-	(setq tab-width 4))
+    (declare-function py-insert-debug netsight nil)
+    (pyvenv-mode 1)
+    (setq python-check-command "flake8")
+    (setq tab-width 4))
   :mode (("\\.py$" . python-mode)
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode)))
+
+(use-package pyvenv)
 
 (use-package rst
   :config
