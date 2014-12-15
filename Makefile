@@ -1,10 +1,10 @@
-EMACS="$(shell which emacs)"
-EMACS_CUSTOMIZE_FILE="~/.emacs-customize.el"
+EMACS=$(shell which emacs)
+EMACS_CUSTOMIZE_FILE=${HOME}/.emacs-customize.el
 
 all: pythonsetup
 
 pythonsetup:
-	test -f "$EMACS_CUSTOMIZE_FILE" || touch "$EMACS_CUSTOMIZE_FILE"
+	$(shell test -f ${EMACS_CUSTOMIZE_FILE} || touch ${EMACS_CUSTOMIZE_FILE})
 	pip install --user --upgrade flake8 virtualenv virtualenvwrapper
 	cask update
 	cask upgrade
