@@ -135,6 +135,12 @@
 (use-package ls-lisp
   :config (setq ls-lisp-use-insert-directory-program nil))
 
+(use-package magit
+  :diminish magit-auto-revert-mode)
+
+(use-package mardown-mode
+  :mode (("\\.md$" . markdown-mode)))
+
 (use-package mule
   :config (setq locale-coding-system 'utf-8)
   :init
