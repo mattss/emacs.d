@@ -83,7 +83,7 @@ otherwise moves to bottom of next screen."
 
 Quick-Insert python debug mode."
   (interactive)
-  (require 'python)
+  (declare-function python-nav-end-of-statement python nil)
   (let ((pdb-text "import pdb; pdb.set_trace()"))
     (python-nav-end-of-statement)
     (newline-and-indent)
@@ -205,16 +205,6 @@ Uses `current-date-time-format' for the formatting the date/time."
       (when pkg-desc-vlen
         (let ((summary (elt pkg-desc-v (- pkg-desc-vlen 1))))
           (insert summary))))))
-
-(defun netsight-load-experiment (file-name)
-  "Load an experimental FILE-NAME into the current session."
-  (let* ((exp-name (locate-user-emacs-file "experimental"))
-	 (exp-dir (file-name-as-directory exp-name))
-	 (exp-path (concat exp-dir file-name)))
-    (if (file-exists-p exp-path)
-	(load exp-path)
-      (message
-       (format "Could not find experimental elisp %s" exp-path)))))
 
 (defun netsight-sudo-edit (&optional arg)
   "Edit currently visited file as root.
