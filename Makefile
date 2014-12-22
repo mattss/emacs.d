@@ -8,7 +8,7 @@ pythonsetup:
 	$(shell test -f ${EMACS_CUSTOMIZE_FILE} || touch ${EMACS_CUSTOMIZE_FILE})
 	$(shell test -d ${VENV_WORKON_HOME} || mkdir ${VENV_WORKON_HOME})
 	pip install --user --upgrade flake8 virtualenv virtualenvwrapper
-        cask update
+	cask update
 	cask install
 	${EMACS} --batch -nw -Q \
 		--load package \
