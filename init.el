@@ -179,6 +179,7 @@
   :config
   (progn
     (declare-function py-insert-debug netsight nil)
+    (setq-default flycheck-flake8rc "~/.config/flake8rc")
     (setq python-check-command "flake8")
     (setq tab-width 4)
     (add-hook 'python-mode-hook
