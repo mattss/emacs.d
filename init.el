@@ -230,7 +230,7 @@
       (server-start))))
 
 (use-package sgml-mode
-  :config (setq sgml-basic-offset 2)
+  :config (setq sgml-basic-offset 4)
   :mode (("\\.pt$" . sgml-mode)
          ("\\.cpt$" . sgml-mode)
          ("\\.html" . sgml-mode)
