@@ -171,6 +171,7 @@
   :init (show-paren-mode 1))
 
 (use-package python
+  :ensure pungi
   :bind (("<kp-5>" . py-insert-debug)
          ("<f9>" . py-insert-debug))
   :mode (("\\.py$" . python-mode)
@@ -184,6 +185,7 @@
     (setq tab-width 4)
     (add-hook 'python-mode-hook
 	      (lambda ()
+		(pungi:setup-jedi)
 		(sphinx-doc-mode t)))))
 
 (use-package pyvenv)
