@@ -5,7 +5,8 @@
 nesight-mode
 ============
 At ``Netsight``, we use a custom minor-mode which defines a set of
-``emacs`` functions and key bindings that we've found useful over time.
+``emacs`` functions and key bindings that we've found useful over
+time.
 
 By default, this minor mode is activated globally (as indicated in
 your mode line).
@@ -37,8 +38,8 @@ The default ``custom-file`` is:
 
 ~/.emacs-customize.el
 
-If you use the ``customize`` interface in Emacs_, then any saved settings
-generated will also be appended to this file.
+If you use the ``customize`` interface in Emacs_, then any saved
+settings generated will also be appended to this file.
 
 Your own settings and functions should be added to
 ``~/.emacs-custom.el``, this file will be created on your behalf (if
@@ -46,29 +47,30 @@ it doesn't already exist) upon installation. Move any personal
 preferences, settings, and/or utility functions you've previously used
 into this file.
 
-If you require variables to differ depending on the project you're working on, 
-consider using `directory local variables`_.
+If you require variables to differ depending on the project you're
+working on, consider using `directory local variables`_.
 
 Package management
 ==================
 New packages can be added to Emacs by using the package manager ``M-x
 list-packages``.
 
-The pallet_ package automatically takes care of keeping the `Cask file_` up to
-date with packages you may install or delete with ``list-packages``.
+The pallet_ package automatically takes care of keeping the `Cask
+file_` up to date with packages you may install or delete with
+``list-packages``.
 
 Python development
 ==================
 By default, the netsight package uses the built-in python_ package,
 
-The pungi_ package provides jedi_ and pyvenv_
-integration for buildout_ and virtualenv.
+The pungi_ package provides jedi_ and pyvenv_ integration for
+buildout_ and virtualenv.
 
 The flycheck_ package is used for PEP8 and syntax checking.
 
-The sphinx-doc_ package provides auto-generation of documentation strings for
-functions and methods.  Consult the python_ mode help for commands to insert
-doc strings for other Python_ statements.
+The sphinx-doc_ package provides auto-generation of documentation
+strings for functions and methods.  Consult the python_ mode help for
+commands to insert doc strings for other Python_ statements.
 
 
 Related packages
@@ -90,8 +92,8 @@ Related packages
     On-the-fly syntax checking (Flymake done right)
 					
 
-See the package documentation for each of the above for a
-synopsis on the all the key-bindings and utilities available.
+See the package documentation for each of the above for a synopsis on
+the all the key-bindings and utilities available.
 
 the pungi_ package detects if the file you are editing resides in
 either virtualenv, or ``buildout``, and makes the
