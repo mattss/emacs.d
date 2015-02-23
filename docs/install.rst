@@ -48,10 +48,12 @@ For the commands below we'll use the ``master`` branch.
   cd ~/.emacs.d
   make
 
-Launch ``emacs`` and run the following commands:
+Launch ``emacs`` and evaluate the following emacs-lisp expression
+(e.g in the ``*scratch*`` buffer, or invoke with ``M-x``):
 
-    load-library RET jedi
-    jedi:install-server
+.. code-block:: lisp
+
+    (jedi:install-server)
 
 
 Updating packages
