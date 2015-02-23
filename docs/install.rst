@@ -42,7 +42,7 @@ See https://github.com/netsight/emacs.d/releases
 
 For the commands below we'll use the ``master`` branch.
 
-.. code-block: bash
+.. code-block:: bash
 
   git clone https://github.com/netsight/emacs.d ~/.emacs.d
   cd ~/.emacs.d
