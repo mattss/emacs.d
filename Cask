@@ -50,4 +50,5 @@
 (depends-on "shut-up")
 (depends-on "sphinx-doc")
 (depends-on "use-package")
+(depends-on "vcl-mode")
 (depends-on "zencoding-mode")

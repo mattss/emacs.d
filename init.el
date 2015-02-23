@@ -251,6 +251,9 @@
 
 (use-package vc)
 
+(use-package vcl
+  :mode (("\\.vcl" . vcl-mode)))
+
 ;; Ensure PATH is preserved from shell.
 (exec-path-from-shell-initialize)
 
