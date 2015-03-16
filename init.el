@@ -100,19 +100,19 @@
 
 (use-package flycheck
   :bind ("<kp-7>" . flycheck-next-error)
-  :config
-  (progn
-    (setq flycheck-python-flake8-executable "flake8")
-    (setq flycheck-flake8-maximum-line-length 79)
-    (setq flycheck-highlighting-mode 'lines))
   :init
   (progn
     (declare-function flycheck-next-error flycheck nil)
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
     (fringe-mode (quote (4 . 0)))
-    (global-flycheck-mode 1)))
+    (global-flycheck-mode 1))
+  :config
+  (progn
+    (setq flycheck-python-flake8-executable "flake8")
+    (setq flycheck-flake8-maximum-line-length 79)
+    (setq flycheck-highlighting-mode 'lines)))
 
-(use-package flymake disabled: 't)
+(use-package flymake :disabled 't)
 
 (use-package gist)
 
@@ -208,8 +208,7 @@
 (use-package sass-mode
   :config (setq sass-indent-offset 2))
 
-(use-package sendmail
-  config: (setq-default mail-interactive 't))
+(use-package sendmail)
 
 (use-package sphinx-doc)
 
@@ -239,7 +238,7 @@
          ("\\.htm" . sgml-mode)))
 
 (use-package shell
-  config: (setq shell-prompt-pattern "\\u@\\h: \\w $ "))
+  :config (setq shell-prompt-pattern "\\u@\\h: \\w $ "))
 
 (use-package sql-mode
   :mode (("\\.zsql$" . sql-mode)
