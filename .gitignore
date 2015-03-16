@@ -3,6 +3,7 @@
 *~
 *_flymake.el
 ido.last
+server
 /.cask
 /.mc-lists.el
 /.python-environments
