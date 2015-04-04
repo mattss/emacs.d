@@ -38,7 +38,6 @@
     (add-hook 'after-init-hook #'global-netsight-mode)))
 
 (use-package bookmark
-  :defer
   :config
   (progn
     (define-key global-map [menu-bar bookmarks]
@@ -63,22 +62,18 @@
       '("Goto bookmark" . bookmark-jump))))
 
 (use-package browse-kill-ring
-  :defer
   :bind ("<kp-8>" . browse-kill-ring))
 
 (use-package conf-mode
-  :defer
   :mode (("\\.conf" . conf-mode)
          ("\\.cfg" . conf-mode)
          ("\\.ini" . conf-mode)))
 
 (use-package css-mode
-  :defer
   :mode (("\\.kss$" . css-mode)
          ("\\.css.dtml$". css-mode)))
 
 (use-package dired
-  :defer
   :config
   (progn
     (defadvice dired-readin
@@ -87,7 +82,6 @@
       (netsight-sort-directories-first))))
 
 (use-package dired-x
-  :defer
   :config
   (progn
     (setq-default dired-omit-files-p nil)
@@ -96,7 +90,6 @@
 
 
 (use-package ediff
-  :defer
   :config
   (progn
     (setq ediff-shell (getenv "$SHELL"))
@@ -106,7 +99,6 @@
 (use-package editorconfig)
 
 (use-package flycheck
-  :defer
   :bind ("<kp-7>" . flycheck-next-error)
   :preface
   (progn
@@ -122,25 +114,22 @@
 
 (use-package flymake :disabled 't)
 
-(use-package gist :defer)
+(use-package gist)
 
-(use-package git-gutter+ :defer)
+(use-package git-gutter+)
 
-(use-package google-this :defer)
+(use-package google-this)
 
 (use-package js2-mode
-  :defer
   :mode (("\\.js$" . js2-mode))
   :config
   (progn
     (setq-default indent-tabs-mode nil)))
 
 (use-package java-mode
-  :defer
   :mode (("\\.js.dtml$" . java-mode)))
 
 (use-package jedi
-  :defer
   :preface
   (progn
     (declare-function jedi:goto-definition jedi nil)
@@ -151,19 +140,15 @@
 	 ("C-?" . jedi:show-doc)))
 
 (use-package ls-lisp
-  :defer
   :config (setq ls-lisp-use-insert-directory-program nil))
 
 (use-package magit
-  :defer
   :diminish magit-auto-revert-mode)
 
 (use-package mardown-mode
-  :defer
   :mode (("\\.md$" . markdown-mode)))
 
 (use-package mule
-  :defer
   :config (setq locale-coding-system 'utf-8)
   :init
   (progn
@@ -174,7 +159,6 @@
     (prefer-coding-system 'utf-8)))
 
 (use-package nxml-mode
-  :defer
   :mode (("\\.xml$" . nxml-mode)
          ("\\.zcml$" . nxml-mode))
   :config
@@ -184,13 +168,11 @@
 		(setq indent-tabs-mode nil)))))
 
 (use-package paren
-  :defer
   :config (setq show-paren-style 'expression)
   :init (show-paren-mode 1))
 
 (use-package python
   :ensure pungi
-  :defer
   :bind (("<kp-5>" . py-insert-debug)
          ("<f9>" . py-insert-debug))
   :mode (("\\.py$" . python-mode)
@@ -207,10 +189,9 @@
 		(pungi:setup-jedi)
 		(sphinx-doc-mode t)))))
 
-(use-package pyvenv :defer)
+(use-package pyvenv)
 
 (use-package rst
-  :defer
   :config
   (progn
     (set-fill-column 79)
@@ -226,18 +207,16 @@
   :mode (("\\.rst$" . rst-mode)))
 
 (use-package sass-mode
-  :defer
   :config (setq sass-indent-offset 2))
 
-(use-package sendmail :defer)
+(use-package sendmail)
 
-(use-package sphinx-doc :defer)
+(use-package sphinx-doc)
 
 ;; Emacs server configuration
 ;; Allows use with screen
 ;; Start either gnuserv or emacsserver for external access
 (use-package server
-  :defer
   :config
   (progn
     (setq server-socket-dir
@@ -253,7 +232,6 @@
       (server-start))))
 
 (use-package sgml-mode
-  :defer
   :config (setq sgml-basic-offset 4)
   :mode (("\\.pt$" . sgml-mode)
          ("\\.cpt$" . sgml-mode)
@@ -261,23 +239,19 @@
          ("\\.htm" . sgml-mode)))
 
 (use-package shell
-  :defer
   :config (setq shell-prompt-pattern "\\u@\\h: \\w $ "))
 
 (use-package sql-mode
-  :defer
   :mode (("\\.zsql$" . sql-mode)
          ("\\.sql$" . sql-mode)))
 
 (use-package text
-  :defer
   :mode (("\\.po$" . text-mode)
 	 ("\\.pot$" . text-mode)))
 
-(use-package vc :defer)
+(use-package vc)
 
 (use-package vcl
-  :defer
   :mode (("\\.vcl" . vcl-mode)))
 
 ;; Ensure PATH is preserved from shell.
