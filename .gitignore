@@ -3,12 +3,14 @@
 *~
 *_flymake.el
 ido.last
+recentf
 server
 /.cask
 /.mc-lists.el
 /.python-environments
 /auto-save-list
 /elpa
+/jabber-avatar-cache
 /projectile.cache
 /sandbox
 /tramp
