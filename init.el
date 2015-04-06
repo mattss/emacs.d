@@ -26,78 +26,75 @@
 (use-package netsight
   :load-path "lisp"
   :config
-  (progn
-    (declare-function global-netsight-mode netsight nil)
-    (add-hook 'after-init-hook #'global-netsight-mode)
-    ;; Turn off UI clutter
-    (mapc
-     (lambda (mode)
-       (when (fboundp mode)
-	 (funcall mode -1)))
-     '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (declare-function global-netsight-mode netsight nil)
+  (add-hook 'after-init-hook #'global-netsight-mode)
+  ;; Turn off UI clutter
+  (mapc
+   (lambda (mode)
+     (when (fboundp mode)
+       (funcall mode -1)))
+   '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
-    ;; Set misc settings.
-    (setq-default indent-line-function 'insert-tab)
-    (setq indent-tabs-mode nil)
-    (setq tab-always-indent nil)
+  ;; Set misc settings.
+  (setq-default indent-line-function 'insert-tab)
+  (setq indent-tabs-mode nil)
+  (setq tab-always-indent nil)
 
-    ;; scrolling - do not add newlines when cursoring past last line in file
-    (setq scroll-step 1)
-    (setq next-line-add-newlines nil)
+  ;; scrolling - do not add newlines when cursoring past last line in file
+  (setq scroll-step 1)
+  (setq next-line-add-newlines nil)
 
-    ;; Display
-    (global-linum-mode 0)
-    (setq fill-column 79)
-    (setq transient-mark-mode 't)
-    (setq column-number-mode t)
-    (setq inhibit-startup-message t)
-    (setq search-highlight t)
-    (setq query-replace-highlight t)
+  ;; Display
+  (global-linum-mode 0)
+  (setq fill-column 79)
+  (setq transient-mark-mode 't)
+  (setq column-number-mode t)
+  (setq inhibit-startup-message t)
+  (setq search-highlight t)
+  (setq query-replace-highlight t)
 
-    ;; Desktop mode
-    ;; Useful for remembering a set of file you're working on -
-    ;;  - enables switching between projects and keeping state.
-    (setq desktop-save-mode t)
+  ;; Desktop mode
+  ;; Useful for remembering a set of file you're working on -
+  ;;  - enables switching between projects and keeping state.
+  (setq desktop-save-mode t)
 
-    ;; Misc settings
-    (setq mail-interactive t)
+  ;; Misc settings
+  (setq mail-interactive t)
 
-    ;; Annoyance factor
-    (fset 'yes-or-no-p 'y-or-n-p)
-    (setq redisplay-dont-pause 't)
-    (setq font-lock-verbose nil)
-    (setq confirm-nonexistent-file-or-buffer nil)
+  ;; Annoyance factor
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (setq redisplay-dont-pause 't)
+  (setq font-lock-verbose nil)
+  (setq confirm-nonexistent-file-or-buffer nil)
 
-    ;; Un-disable some 'dangerous!' commands
-    (put 'upcase-region 'disabled nil)
-    (put 'downcase-region 'disabled nil)
-    (put 'narrow-to-region 'disabled nil)
-    (put 'narrow-to-page 'disabled nil)))
-
+  ;; Un-disable some 'dangerous!' commands
+  (put 'upcase-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
+  (put 'narrow-to-region 'disabled nil)
+  (put 'narrow-to-page 'disabled nil))
 
 (use-package bookmark
   :config
-  (progn
-    (define-key global-map [menu-bar bookmarks]
-      (cons "Bookmarks" (make-sparse-keymap "Bookmarks")))
-    (define-key global-map
-      [menu-bar bookmarks bookmark-insert]
-      '("Insert bookmark into buffer" . bookmark-insert))
-    (define-key global-map
-      [menu-bar bookmarks bookmark-delete]
-      '("Delete bookmark" . bookmark-delete))
-    (define-key global-map
-      [menu-bar bookmarks bookmark-save]
-      '("Save bookmarks" . bookmark-save))
-    (define-key global-map
-      [menu-bar bookmarks list-bookmarks]
-      '("List bookmarks" . list-bookmarks))
-    (define-key global-map
-      [menu-bar bookmarks bookmark-set]
-      '("Add bookmark" . bookmark-sebt))
-    (define-key global-map
-      [menu-bar bookmarks bookmark-jump]
-      '("Goto bookmark" . bookmark-jump))))
+  (define-key global-map [menu-bar bookmarks]
+    (cons "Bookmarks" (make-sparse-keymap "Bookmarks")))
+  (define-key global-map
+    [menu-bar bookmarks bookmark-insert]
+    '("Insert bookmark into buffer" . bookmark-insert))
+  (define-key global-map
+    [menu-bar bookmarks bookmark-delete]
+    '("Delete bookmark" . bookmark-delete))
+  (define-key global-map
+    [menu-bar bookmarks bookmark-save]
+    '("Save bookmarks" . bookmark-save))
+  (define-key global-map
+    [menu-bar bookmarks list-bookmarks]
+    '("List bookmarks" . list-bookmarks))
+  (define-key global-map
+    [menu-bar bookmarks bookmark-set]
+    '("Add bookmark" . bookmark-sebt))
+  (define-key global-map
+    [menu-bar bookmarks bookmark-jump]
+    '("Goto bookmark" . bookmark-jump)))
 
 (use-package browse-kill-ring
   :bind ("<kp-8>" . browse-kill-ring))
@@ -113,42 +110,37 @@
 
 (use-package dired
   :config
-  (progn
-    (defadvice dired-readin
+  (defadvice dired-readin
       (after dired-after-updating-hook first () activate)
-      "Sort dired listings with directories first before adding mark."
-      (netsight-sort-directories-first))))
+    "Sort dired listings with directories first before adding mark."
+    (netsight-sort-directories-first)))
 
 (use-package dired-x
   :config
-  (progn
-    (setq-default dired-omit-files-p nil)
-    (setq dired-omit-files
-          (concat dired-omit-files "\\|^\\..+$"))))
+  (setq-default dired-omit-files-p nil)
+  (setq dired-omit-files
+	(concat dired-omit-files "\\|^\\..+$")))
 
 
 (use-package ediff
   :config
-  (progn
-    (setq ediff-shell (getenv "$SHELL"))
-    (setq-default ediff-split-window-function
-                  (quote split-window-vertically))))
+  (setq ediff-shell (getenv "$SHELL"))
+  (setq-default ediff-split-window-function
+		(quote split-window-vertically)))
 
 (use-package editorconfig)
 
 (use-package flycheck
   :bind ("<kp-7>" . flycheck-next-error)
   :preface
-  (progn
-    (declare-function flycheck-next-error flycheck nil)
-    (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-    (fringe-mode (quote (4 . 0)))
-    (global-flycheck-mode 1))
+  (declare-function flycheck-next-error flycheck nil)
+  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+  (fringe-mode (quote (4 . 0)))
+  (global-flycheck-mode 1)
   :config
-  (progn
-    (setq flycheck-python-flake8-executable "flake8")
-    (setq flycheck-flake8-maximum-line-length 79)
-    (setq flycheck-highlighting-mode 'lines)))
+  (setq flycheck-python-flake8-executable "flake8")
+  (setq flycheck-flake8-maximum-line-length 79)
+  (setq flycheck-highlighting-mode 'lines))
 
 (use-package flymake :disabled 't)
 
@@ -161,18 +153,16 @@
 (use-package js2-mode
   :mode (("\\.js$" . js2-mode))
   :config
-  (progn
-    (setq-default indent-tabs-mode nil)))
+  (setq-default indent-tabs-mode nil))
 
 (use-package java-mode
   :mode (("\\.js.dtml$" . java-mode)))
 
 (use-package jedi
   :preface
-  (progn
-    (declare-function jedi:goto-definition jedi nil)
-    (declare-function jedi:related-names jedi nil)
-    (declare-function jedi:show-doc jedi nil))
+  (declare-function jedi:goto-definition jedi nil)
+  (declare-function jedi:related-names jedi nil)
+  (declare-function jedi:show-doc jedi nil)
   :bind (("C-." . jedi:goto-definition)
 	 ("C-c r" . jedi:related-names)
 	 ("C-?" . jedi:show-doc)))
@@ -189,21 +179,19 @@
 (use-package mule
   :config (setq locale-coding-system 'utf-8)
   :init
-  (progn
-    (set-language-environment 'utf-8)
-    (set-default-coding-systems 'utf-8)
-    (set-terminal-coding-system 'utf-8)
-    (set-selection-coding-system 'utf-8)
-    (prefer-coding-system 'utf-8)))
+  (set-language-environment 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8))
 
 (use-package nxml-mode
   :mode (("\\.xml$" . nxml-mode)
          ("\\.zcml$" . nxml-mode))
   :config
-  (progn
-    (add-hook 'nxml-mode-hook
-	      (lambda ()
-		(setq indent-tabs-mode nil)))))
+  (add-hook 'nxml-mode-hook
+	    (lambda ()
+	      (setq indent-tabs-mode nil))))
 
 (use-package paren
   :config (setq show-paren-style 'expression)
@@ -217,29 +205,27 @@
          ("\\.cpy$" . python-mode)
          ("\\.vpy$" . python-mode))
   :config
-  (progn
-    (declare-function py-insert-debug netsight nil)
-    (setq-default flycheck-flake8rc "~/.config/flake8rc")
-    (setq python-check-command "flake8")
-    (setq tab-width 4)
-    (pungi:setup-jedi)
-    (sphinx-doc-mode t)))
+  (declare-function py-insert-debug netsight nil)
+  (setq-default flycheck-flake8rc "~/.config/flake8rc")
+  (setq python-check-command "flake8")
+  (setq tab-width 4)
+  (pungi:setup-jedi)
+  (sphinx-doc-mode t))
 
 (use-package pyvenv)
 
 (use-package rst
   :config
-  (progn
-    (set-fill-column 79)
-    (setq rst-adornment-faces-alist
-          (quote ((nil . font-lock-keyword-face)
-                  (nil . font-lock-keyword-face)
-                  (nil . rst-level-1-face)
-                  (2 . rst-level-2-face)
-                  (3 . rst-level-3-face)
-                  (4 . rst-level-4-face)
-                  (5 . rst-level-5-face)
-                  (nil . rst-level-5-face)))))
+  (set-fill-column 79)
+  (setq rst-adornment-faces-alist
+	(quote ((nil . font-lock-keyword-face)
+		(nil . font-lock-keyword-face)
+		(nil . rst-level-1-face)
+		(2 . rst-level-2-face)
+		(3 . rst-level-3-face)
+		(4 . rst-level-4-face)
+		(5 . rst-level-5-face)
+		(nil . rst-level-5-face))))
   :mode (("\\.rst$" . rst-mode)))
 
 (use-package sass-mode
@@ -254,18 +240,16 @@
 ;; Start either gnuserv or emacsserver for external access
 (use-package server
   :config
-  (progn
-    (setq server-socket-dir
-          (format "%semacs%d"
-                  temporary-file-directory
-                  (user-uid)))
-    (setq server-use-tcp 't))
+  (setq server-socket-dir
+	(format "%semacs%d"
+		temporary-file-directory
+		(user-uid)))
+  (setq server-use-tcp 't)
   :init
-  (progn
-    (when (not (or
-                (window-system)
-                (eq 'windows-nt system-type)))
-      (server-start))))
+  (when (not (or
+	      (window-system)
+	      (eq 'windows-nt system-type)))
+    (server-start)))
 
 (use-package sgml-mode
   :config (setq sgml-basic-offset 4)
