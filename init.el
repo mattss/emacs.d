@@ -7,35 +7,73 @@
 
 ;;; Code:
 
-;; Setup load-path
-(add-to-list 'load-path (locate-user-emacs-file "lisp"))
-
-;; Turn off UI clutter
-(mapc
- (lambda (mode)
-   (when (fboundp mode)
-     (funcall mode -1)))
- '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-
 ;; Setup package management (Cask)
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 (require 'pallet)
 (require 'f)
 (require 's)
-(require 'use-package)
 
 ;; Package configuration
-(use-package netsight-defuns :load-path "lisp")
+
 (use-package netsight
   :load-path "lisp"
-  :preface
+  :config
   (progn
     (declare-function global-netsight-mode netsight nil)
-    (add-hook 'after-init-hook #'global-netsight-mode)))
+    (add-hook 'after-init-hook #'global-netsight-mode)
+    ;; Turn off UI clutter
+    (mapc
+     (lambda (mode)
+       (when (fboundp mode)
+	 (funcall mode -1)))
+     '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+
+    ;; Set misc settings.
+    (setq-default indent-line-function 'insert-tab)
+    (setq indent-tabs-mode nil)
+    (setq tab-always-indent nil)
+
+    ;; scrolling - do not add newlines when cursoring past last line in file
+    (setq scroll-step 1)
+    (setq next-line-add-newlines nil)
+
+    ;; Display
+    (global-linum-mode 0)
+    (setq fill-column 79)
+    (setq transient-mark-mode 't)
+    (setq column-number-mode t)
+    (setq inhibit-startup-message t)
+    (setq search-highlight t)
+    (setq query-replace-highlight t)
+
+    ;; Desktop mode
+    ;; Useful for remembering a set of file you're working on -
+    ;;  - enables switching between projects and keeping state.
+    (setq desktop-save-mode t)
+
+    ;; Misc settings
+    (setq mail-interactive t)
+
+    ;; Annoyance factor
+    (fset 'yes-or-no-p 'y-or-n-p)
+    (setq redisplay-dont-pause 't)
+    (setq font-lock-verbose nil)
+    (setq confirm-nonexistent-file-or-buffer nil)
+
+    ;; Un-disable some 'dangerous!' commands
+    (put 'upcase-region 'disabled nil)
+    (put 'downcase-region 'disabled nil)
+    (put 'narrow-to-region 'disabled nil)
+    (put 'narrow-to-page 'disabled nil)))
+
 
 (use-package bookmark
   :config
@@ -184,10 +222,8 @@
     (setq-default flycheck-flake8rc "~/.config/flake8rc")
     (setq python-check-command "flake8")
     (setq tab-width 4)
-    (add-hook 'python-mode-hook
-	      (lambda ()
-		(pungi:setup-jedi)
-		(sphinx-doc-mode t)))))
+    (pungi:setup-jedi)
+    (sphinx-doc-mode t)))
 
 (use-package pyvenv)
 
