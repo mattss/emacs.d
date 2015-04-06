@@ -25,6 +25,7 @@
 
 (use-package netsight
   :load-path "lisp"
+  :diminish netsight-mode
   :config
   (progn
     (declare-function global-netsight-mode netsight nil)
