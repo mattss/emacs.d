@@ -25,6 +25,7 @@
 
 (use-package netsight
   :load-path "lisp"
+  :diminish netsight-mode
   :config
   (declare-function global-netsight-mode netsight nil)
   (add-hook 'after-init-hook #'global-netsight-mode)
