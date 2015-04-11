@@ -1,17 +1,16 @@
-;;; init.el --- Init file for Netsight development. -*- lexical-binding: t; -*-
-
+;;; init.el --- Init file for Netsight development. -*- lexical-binding: t; coding: utf-8 -*-
 ;;; Commentary:
 ;;
 ;; Initialize Emacs configuration.
 ;;
-
 ;;; Code:
 
 ;; Setup package management (Cask)
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(setq package-enable-at-startup nil)
-(package-initialize)
+(eval-when-compile
+  (require 'cask "~/.cask/cask.el")
+  (cask-initialize)
+  (setq package-enable-at-startup nil)
+  (package-initialize))
 
 (eval-when-compile
   (require 'use-package))
@@ -30,13 +29,11 @@
   (declare-function global-netsight-mode netsight nil)
   (add-hook 'after-init-hook #'global-netsight-mode)
   ;; Turn off UI clutter
-  (mapc
-   (lambda (mode)
-     (when (fboundp mode)
-       (funcall mode -1)))
-   '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  :config
+  (mapc #'apply `((menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)))
 
   ;; Set misc settings.
+
   (setq-default indent-line-function 'insert-tab)
   (setq indent-tabs-mode nil)
   (setq tab-always-indent nil)
@@ -47,7 +44,6 @@
 
   ;; Display
   (global-linum-mode 0)
-  (setq fill-column 79)
   (setq transient-mark-mode 't)
   (setq column-number-mode t)
   (setq inhibit-startup-message t)
@@ -122,7 +118,6 @@
   (setq dired-omit-files
 	(concat dired-omit-files "\\|^\\..+$")))
 
-
 (use-package ediff
   :config
   (setq ediff-shell (getenv "$SHELL"))
@@ -130,6 +125,10 @@
 		(quote split-window-vertically)))
 
 (use-package editorconfig)
+
+(use-package emacs-lisp-mode
+  :mode (("*scratch*" . emacs-lisp-mode)
+	 ("\\.el$" . emacs-lisp-mode)))
 
 (use-package flycheck
   :bind ("<kp-7>" . flycheck-next-error)
@@ -139,6 +138,7 @@
   (fringe-mode (quote (4 . 0)))
   (global-flycheck-mode 1)
   :config
+  (setq flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-python-flake8-executable "flake8")
   (setq flycheck-flake8-maximum-line-length 79)
   (setq flycheck-highlighting-mode 'lines))
@@ -207,6 +207,7 @@
          ("\\.vpy$" . python-mode))
   :config
   (declare-function py-insert-debug netsight nil)
+  (setq fill-column 79)
   (setq-default flycheck-flake8rc "~/.config/flake8rc")
   (setq python-check-command "flake8")
   (setq tab-width 4)
@@ -217,7 +218,7 @@
 
 (use-package rst
   :config
-  (set-fill-column 79)
+  (setq fill-column 79)
   (setq rst-adornment-faces-alist
 	(quote ((nil . font-lock-keyword-face)
 		(nil . font-lock-keyword-face)
