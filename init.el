@@ -25,25 +25,22 @@
   :load-path "lisp"
   :diminish netsight-mode
   :config
-  (declare-function global-netsight-mode netsight nil)
-  (add-hook 'after-init-hook #'global-netsight-mode)
+  (add-hook 'after-init-hook #'netsight-mode)
   ;; Turn off UI clutter
-  :config
   (mapc #'apply `((menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)))
-
-  ;; Set misc settings.
-
+  
+  ;; Misc settings.
   (setq-default indent-line-function 'insert-tab)
   (setq indent-tabs-mode nil)
   (setq tab-always-indent nil)
 
-  ;; scrolling - do not add newlines when cursoring past last line in file
+  ;; Scrolling - do not add newlines when cursoring past last line in file
   (setq scroll-step 1)
   (setq next-line-add-newlines nil)
 
   ;; Display
   (global-linum-mode 0)
-  (setq transient-mark-mode 't)
+  (setq transient-mark-mode t)
   (setq column-number-mode t)
   (setq inhibit-startup-message t)
   (setq search-highlight t)
@@ -59,7 +56,7 @@
 
   ;; Annoyance factor
   (fset 'yes-or-no-p 'y-or-n-p)
-  (setq redisplay-dont-pause 't)
+  (setq redisplay-dont-pause t)
   (setq font-lock-verbose nil)
   (setq confirm-nonexistent-file-or-buffer nil)
 
@@ -142,7 +139,7 @@
   (setq flycheck-flake8-maximum-line-length 79)
   (setq flycheck-highlighting-mode 'lines))
 
-(use-package flymake :disabled 't)
+(use-package flymake :disabled t)
 
 (use-package gist)
 

@@ -83,13 +83,9 @@ When activated, this mode makes the 'standard' netsight keybindings
 take effect."
   nil
   :lighter " Netsight"
+  :global t
   :keymap netsight-keymap
   :group 'netsight-keys)
-
-(define-globalized-minor-mode global-netsight-mode
-  netsight-mode
-  netsight-mode
-  :group 'netsight)
 
 (defconst netisght-devtools-directory "/home/dev/devtools"
   "The directory where the Netsight devtools source is checked out.")
