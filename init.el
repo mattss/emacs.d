@@ -6,11 +6,10 @@
 ;;; Code:
 
 ;; Setup package management (Cask)
-(eval-when-compile
-  (require 'cask "~/.cask/cask.el")
-  (cask-initialize)
-  (setq package-enable-at-startup nil)
-  (package-initialize))
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(setq package-enable-at-startup nil)
+(package-initialize)
 
 (eval-when-compile
   (require 'use-package))
