@@ -1,0 +1,4 @@
+flake8==2.4.0
+pip==6.1.1
+virtualenv==12.1.1
+virtualenvwrapper==4.5.0
