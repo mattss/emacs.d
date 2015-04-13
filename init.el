@@ -28,9 +28,10 @@
   (defun netsight-ffap ()
     "Find file at point support for JAQ URLs."
     (interactive)
-    (let* ((word (thing-at-point 'word))
-	   (url (s-replace "JAQ" netsight-jaq-url word)))
-      (ffap url)))
+    (let* ((word (thing-at-point 'word)))
+      (if (s-matches? "^JAQ[0-9]+" word)
+	  (ffap (s-replace "JAQ" netsight-jaq-url word))
+	(ffap))))
   :config
   (bind-key "C-x C-o" #'netsight-ffap netsight-keymap)
   (add-hook 'after-init-hook #'netsight-mode)
