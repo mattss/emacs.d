@@ -37,6 +37,9 @@
   :group 'netsight-modes
   :prefix "netsight:key-")
 
+(defvar netsight-jaq-url "https://jaq.netsight.co.uk/jaq/queue/"
+  "Base URL for the Netsight Task tool.")
+
 (defvar netsight-keymap
   (let ((map (make-sparse-keymap)))
     ;; Keys for custom netsight defuns
@@ -54,7 +57,6 @@
     (define-key map (kbd "M-g f") 'list-faces-display)
     (define-key map (kbd "M-s x") 'replace-regexp)
     (define-key map (kbd "M-z") 'goto-char)
-    (define-key map (kbd "C-x C-o") 'ffap)
     (define-key map (kbd "C-x r r") 'revert-buffer)
     (define-key map (kbd "C-x w") 'woman)
 
