@@ -13,11 +13,10 @@ pythonsetup:
 	$(shell test -f ${USER_CONF_DIR}/${FLAKE8_CONF_NAME} || cp ${FLAKE8_CONF_SRC} ${FLAKE8_CONF_TARGET})
 	$(shell test -f ${EMACS_CUSTOMIZE_FILE} || touch ${EMACS_CUSTOMIZE_FILE})
 	$(shell test -d ${VENV_WORKON_HOME} || mkdir ${VENV_WORKON_HOME})
-	pip install --user --upgrade flake8 virtualenv virtualenvwrapper
-	cask update
+	pip install --user -r requirements.txt
 	cask install
 	${EMACS} --batch -nw -Q \
 		--load package \
 		--eval "(when (require 'jedi nil :noerr) (jedi:install-server))"
 clean:
-	$(shell pip list | grep flake8 && pip uninstall flake8)
+	$(shell pip uninstall -y -r requirements.txt)
