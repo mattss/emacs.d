@@ -37,7 +37,7 @@
   (add-hook 'after-init-hook #'netsight-mode)
   ;; Turn off UI clutter
   (mapc #'apply `((menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)))
-  
+
   ;; Misc settings.
   (setq-default indent-line-function 'insert-tab)
   (setq indent-tabs-mode nil)
@@ -176,8 +176,7 @@
 (use-package ls-lisp
   :config (setq ls-lisp-use-insert-directory-program nil))
 
-(use-package magit
-  :diminish magit-auto-revert-mode)
+(use-package magit)
 
 (use-package mardown-mode
   :mode (("\\.md$" . markdown-mode)))
