@@ -25,7 +25,6 @@
 (depends-on "gist")
 (depends-on "git")
 (depends-on "git-blame")
-(depends-on "git-commit-training-wheels-mode")
 (depends-on "git-gutter+")
 (depends-on "git-gutter-fringe+")
 (depends-on "google-this")
@@ -50,4 +49,5 @@
 (depends-on "shut-up")
 (depends-on "sphinx-doc")
 (depends-on "use-package")
+(depends-on "vcl-mode")
 (depends-on "zencoding-mode")

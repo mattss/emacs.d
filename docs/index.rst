@@ -6,4 +6,3 @@ Documentation
 
 .. _Installation: install.rst
 .. _Usage: usage.rst
-
