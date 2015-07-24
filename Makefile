@@ -13,7 +13,7 @@ pythonsetup:
 	$(shell test -f ${USER_CONF_DIR}/${FLAKE8_CONF_NAME} || cp ${FLAKE8_CONF_SRC} ${FLAKE8_CONF_TARGET})
 	$(shell test -f ${EMACS_CUSTOMIZE_FILE} || touch ${EMACS_CUSTOMIZE_FILE})
 	$(shell test -d ${VENV_WORKON_HOME} || mkdir ${VENV_WORKON_HOME})
-	pip install --user -r requirements.txt
+	pip install --user --install-option="--prefix=" -r requirements.txt
 	cask install
 	${EMACS} --batch -nw -Q \
 		--load package \
