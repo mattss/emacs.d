@@ -25,7 +25,6 @@
 (depends-on "gist")
 (depends-on "git")
 (depends-on "git-blame")
-(depends-on "git-commit-training-wheels-mode")
 (depends-on "git-gutter+")
 (depends-on "git-gutter-fringe+")
 (depends-on "google-this")
