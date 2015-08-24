@@ -1,5 +1,4 @@
 (source gnu)
-(source marmalade)
 (source melpa)
 
 (depends-on "ace-jump-buffer")
