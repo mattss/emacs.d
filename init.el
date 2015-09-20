@@ -203,7 +203,6 @@
   :init (show-paren-mode 1))
 
 (use-package python
-  :ensure pungi
   :bind (("<kp-5>" . py-insert-debug)
          ("<f9>" . py-insert-debug))
   :mode (("\\.py$" . python-mode)
@@ -215,7 +214,6 @@
   (setq-default flycheck-flake8rc "~/.config/flake8rc")
   (setq python-check-command "flake8")
   (setq tab-width 4)
-  (pungi:setup-jedi)
   (sphinx-doc-mode t))
 
 (use-package pyvenv)
@@ -258,7 +256,11 @@
     (server-start)))
 
 (use-package sgml-mode
-  :config (setq sgml-basic-offset 4)
+  :config
+  (setq sgml-basic-offset 4)
+  (add-hook 'sgml-mode-hook
+	    (lambda ()
+	      (setq indent-tabs-mode nil)))
   :mode (("\\.pt$" . sgml-mode)
          ("\\.cpt$" . sgml-mode)
          ("\\.html" . sgml-mode)
