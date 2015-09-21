@@ -50,3 +50,7 @@
 (depends-on "use-package")
 (depends-on "vcl-mode")
 (depends-on "zencoding-mode")
+
+(depends-on "jabber")	
+(depends-on "helm")
+(depends-on "lush-theme")
