@@ -21,7 +21,7 @@ Backing up your existing configuration:
 
 .. code-block:: bash
 
-   test -d ~/.emacs.d && mv ~/emacs.d{,.bak}
+   test -d ~/.emacs.d && mv ~/.emacs.d{,.bak}
    test -f ~/.emacs && mv ~/.emacs{,.bak}
 
 
