@@ -255,6 +255,9 @@
 	      (eq 'windows-nt system-type)))
     (server-start)))
 
+(use-package sass-mode
+  :mode (("\\.scss" . sass-mode)))
+
 (use-package sgml-mode
   :config
   (setq sgml-basic-offset 4)
