@@ -41,7 +41,7 @@ Installation
 ============
 If you want to run a stable version, please checkout a release tag
 
-See https://github.com/netsight/emacs.d/releases
+See https://github.com/mattss/emacs.d/releases
 
 For the commands below we'll use the ``master`` branch.
 
