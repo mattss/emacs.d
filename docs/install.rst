@@ -47,7 +47,7 @@ For the commands below we'll use the ``master`` branch.
 
 .. code-block:: bash
 
-  git clone https://github.com/netsight/emacs.d ~/.emacs.d
+  git clone https://github.com/mattss/emacs.d ~/.emacs.d
   cd ~/.emacs.d
   make
 
