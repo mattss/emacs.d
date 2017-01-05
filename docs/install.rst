@@ -14,6 +14,8 @@ profile adds the ``cask`` binary to $PATH.
 Use of this package assumes you know how to configure emacs and cask
 appropriately for your platform.
 
+You can find cask here: http://cask.readthedocs.io/en/latest/guide/installation.html
+
 
 Migration from an existing configuration
 ========================================
