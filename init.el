@@ -145,7 +145,6 @@
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit)
   (setq flycheck-python-flake8-executable "flake8")
-  (setq flycheck-flake8-maximum-line-length 79)
   (setq flycheck-highlighting-mode 'lines))
 
 (use-package flymake :disabled t)
